@@ -1,0 +1,7 @@
+{
+  "name": "toyota_mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
