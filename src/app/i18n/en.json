@@ -1,0 +1,23 @@
+{
+  "GLOBAL": {
+    "MISSING_TRANSLATE": "*Missing Translation*",
+    "OK": "Ok",
+    "CANCEL": "CANCEL"
+  },
+  "ERROR": {
+    "WARNING_SYMBOL": "*"
+  },
+  "LOGIN": {
+    "TITLE": "Login",
+    "SIGN_UP": "Sign Up",
+    "FORGOT_PASSWORD": "Forgot password?",
+    "USERNAME": "Username",
+    "PASSWORD": "Password"
+  },
+  "HOME": {
+    "TITLE": "Home",
+    "SCAN_BARCODE": "Scan Barcode",
+    "TEXT_RECONIGTION": "Text Recongition",
+    "LOGOUT": "Logout"
+  }
+}

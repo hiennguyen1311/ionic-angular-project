@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="container">
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-input [label]="titles.username" [placeholder]="titles.username" [value]="username" (ionInput)="onChangeUsername($event)"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-input [label]="titles.password" [placeholder]="titles.password" type="password" value="password" (ionInput)="onChangePassword($event)"></ion-input>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <div class="buttons">
+    <ion-button expand="block"  (click)="login()">{{title}}</ion-button>
+    <ion-button expand="block">{{titles.signup}}</ion-button>
+    <ion-button expand="full" fill="clear">{{titles.forgot_password}}</ion-button>
+  </div>
+
+  <ion-loading [isOpen]="loading" ></ion-loading>
+</ion-content>

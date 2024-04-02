@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#" class="ios"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Scan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div style="padding: 16px;">
+    <ion-button expand="block" (click)="scanBarcode()">Scan</ion-button>
+  </div>
+  <ion-card *ngIf="barcodes[0]" style="padding: 16px;">
+    <ion-text >Values: {{barcodes[0].displayValue}}</ion-text>
+  </ion-card>
+</ion-content>

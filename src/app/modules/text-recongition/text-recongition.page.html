@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#" class="ios"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Text Recongition</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div style="padding: 16px;">
+    <ion-button  (click)="selectImage()">Select Image</ion-button>
+    <ion-button  (click)="capture()">Capture</ion-button>
+    <ion-button [disabled]="disableAnalyze" (click)="analyzeImage()">Analyze</ion-button>
+  </div>
+
+  <ion-card *ngIf="image">
+    <ion-img [src]="image"></ion-img>
+  </ion-card>
+
+  <ion-card *ngIf="imagePath" style="padding: 16px;">
+    <ion-text>{{imagePath}}</ion-text>
+  </ion-card>
+
+  <ion-card *ngIf="text" style="padding: 16px;">
+    <ion-text>
+      {{text}}
+    </ion-text>
+  </ion-card>
+
+  <ion-loading message="Processing..." [isOpen]="loading"></ion-loading>
+</ion-content>

@@ -22,12 +22,31 @@
       "es2018", 
       "dom"
     ],
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "paths": {
+      "@modules/*": ["./src/app/modules/*"],
+      "@plugins/*": ["./src/app/plugins/*"],
+      "@models/*": ["./src/app/models/*"],
+      "@services/*": ["./src/app/services/*"],
+      "@services": ["./src/app/services/index.ts*"],
+      "@core/*": ["./src/app/core/*"],
+      "@core": ["./src/app/core/index.ts*"],
+      "@constant/*": ["./src/app/constant/*"],
+      "@constant": ["./src/app/constant/constant.ts"],
+      "@i18n/*": ["./src/app/i18n/*"],
+      "@i18n": ["./src/app/i18n/i18n.ts"],
+      "@utils/*": ["./src/app/utils/*"],
+      "@utils": ["./src/app/utils/util.ts"],
+      "@store/*": ["./src/app/store/*"],
+      "@store": ["./src/app/store/store.ts"],
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
 }
