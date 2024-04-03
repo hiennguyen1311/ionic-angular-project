@@ -1,3 +1,3 @@
 import { Preferences } from '@capacitor/preferences';
-export const localStorage = Preferences;
-export default localStorage;
+export const LocalStorage = Preferences;
+export default LocalStorage;

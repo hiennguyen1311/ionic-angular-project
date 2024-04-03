@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import i18n from '@i18n/i18n';
-import { NavController } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 import { ApplicationState } from '@models/store.interface';
 import { Store } from '@ngrx/store';
 import { LogoutAction } from '@store/login/login.actions';
@@ -21,8 +20,10 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     private store: Store<ApplicationState>,
-    private router: Router
-  ) {}
+    private platform: Platform
+  ) {
+    this.platform.backButton.subscribeWithPriority(5, () => {});
+  }
 
   goToScan() {
     this.navCtrl.navigateRoot('scan');
@@ -34,6 +35,6 @@ export class HomePage {
 
   logout() {
     this.store.dispatch(LogoutAction());
-    this.router.navigate(['/login']);
+    this.navCtrl.navigateRoot('/login');
   }
 }

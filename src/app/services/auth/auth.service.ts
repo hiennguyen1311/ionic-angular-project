@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import localStorage from '@plugins/LocalStorage/localStorage';
+import LocalStorage from '@plugins/LocalStorage/LocalStorage';
 
 @Injectable({
   providedIn: 'root',
@@ -9,15 +9,15 @@ export class AuthService {
   private authSecretKey = 'token';
 
   constructor() {
-    localStorage
-      .get({ key: this.authSecretKey })
-      .then((data) => this.isAuthenticated == Boolean(data.value));
+    LocalStorage.get({ key: this.authSecretKey }).then(
+      (data) => this.isAuthenticated == Boolean(data.value)
+    );
   }
 
   async login(username: string, password: string): Promise<boolean> {
     const authToken = 'token';
     if (authToken) {
-      await localStorage.set({ key: this.authSecretKey, value: authToken });
+      await LocalStorage.set({ key: this.authSecretKey, value: authToken });
       this.isAuthenticated = true;
       return true;
     } else {
@@ -30,7 +30,7 @@ export class AuthService {
   }
 
   async logout(): Promise<void> {
-    await localStorage.remove({ key: this.authSecretKey });
+    await LocalStorage.remove({ key: this.authSecretKey });
     this.isAuthenticated = false;
   }
 }

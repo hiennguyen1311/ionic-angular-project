@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Encoding, Filesystem } from '@capacitor/filesystem';
 import camera, { CameraResultType } from '@plugins/Camera/camera';
-import imagePicker from '@plugins/ImagePlugin/imagePicker';
+import imagePicker from '@plugins/ImagePlugin/ImagePicker';
 import MLKitPlugins from '@plugins/MLKit/MLKitPlugins';
 
 @Component({

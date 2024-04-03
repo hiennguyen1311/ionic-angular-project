@@ -34,7 +34,6 @@ class MLKiPlugin {
   async scan() {
     return new Promise(async (resolve) => {
       document.querySelector('body')?.classList.add('barcode-scanner-active');
-      document.querySelector('back')?.classList.add('btn-back-button-show');
 
       const listener = await BarcodeScanner.addListener(
         'barcodeScanned',

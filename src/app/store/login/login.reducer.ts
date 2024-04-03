@@ -7,7 +7,7 @@ import {
   LoginActionSuccess,
   LogoutAction,
 } from './login.actions';
-import localStorage from '@plugins/LocalStorage/localStorage';
+import LocalStorage from '@plugins/LocalStorage/LocalStorage';
 
 export const initialState: LoginState = {
   token: '',
@@ -21,7 +21,7 @@ export const LoginReducer = createReducer(
     };
   }),
   on(LoginActionSuccess, (state, {}) => {
-    localStorage.set({ key: 'token', value: 'token' });
+    LocalStorage.set({ key: 'token', value: 'token' });
     return {
       ...state,
       token: 'token',
@@ -33,7 +33,7 @@ export const LoginReducer = createReducer(
     };
   }),
   on(LogoutAction, (state, {}) => {
-    localStorage.set({ key: 'token', value: '' });
+    LocalStorage.set({ key: 'token', value: '' });
     return {
       ...state,
       token: '',
