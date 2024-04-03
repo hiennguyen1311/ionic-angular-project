@@ -39,6 +39,8 @@
       "@utils": ["./src/app/utils/util.ts"],
       "@store/*": ["./src/app/store/*"],
       "@store": ["./src/app/store/store.ts"],
+      "@src/*": ["./src/*"],
+      "@app/*": ["./src/app/*"],
     },
     "resolveJsonModule": true,
     "esModuleInterop": true,

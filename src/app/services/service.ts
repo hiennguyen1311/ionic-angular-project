@@ -1,9 +1,9 @@
-import { BASE_URL } from '@constant/constant';
+import { BASE_API_URL } from '@constant/constant';
 import axios from 'axios';
 
 class Service {
   instance = axios.create({
-    baseURL: BASE_URL,
+    baseURL: BASE_API_URL,
     timeout: 2500,
   });
 
