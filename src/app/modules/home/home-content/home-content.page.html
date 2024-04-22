@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      {{titles.main}}
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-menu-toggle> 
+        <ion-button>
+          <ion-icon name="menu"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="main-content" class="container">
+    <ion-button expand="block" (click)="goToScan()">
+      {{titles.scan_barcode}}
+    </ion-button>
+    <ion-button expand="block" (click)="goToRecongnition()">
+      {{titles.text_reconigtion}}
+    </ion-button>
+
+    <ion-button expand="block" (click)="goToTabs()">
+      {{titles.tabs}}
+    </ion-button>
+
+    <ion-button expand="block" (click)="goToSideMenu()">
+      {{titles.menu}}
+    </ion-button>
+  </div>
+</ion-content>

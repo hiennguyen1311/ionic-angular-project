@@ -1,21 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LogoutAction } from '@store/login/login.actions';
 import i18n from '@i18n/i18n';
 import { NavController, Platform } from '@ionic/angular';
 import { ApplicationState } from '@models/store.interface';
 import { Store } from '@ngrx/store';
-import { LogoutAction } from '@store/login/login.actions';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-home-content',
+  templateUrl: './home-content.page.html',
+  styleUrls: ['./home-content.page.scss'],
 })
-export class HomePage {
+export class HomeContentPage implements OnInit {
   titles = {
     main: i18n.t('HOME.TITLE'),
     scan_barcode: i18n.t('HOME.SCAN_BARCODE'),
     text_reconigtion: i18n.t('HOME.TEXT_RECONIGTION'),
-    logout: i18n.t('HOME.LOGOUT'),
     tabs: i18n.t('HOME.TABS'),
     menu: i18n.t('HOME.MENU'),
   };
@@ -26,6 +25,8 @@ export class HomePage {
   ) {
     this.platform.backButton.subscribeWithPriority(5, () => {});
   }
+
+  ngOnInit(): void {}
 
   goToScan() {
     this.navCtrl.navigateRoot('scan');

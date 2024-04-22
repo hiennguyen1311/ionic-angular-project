@@ -9,9 +9,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreReducer } from '@store/store.reducer';
 import { StoreEffect } from '@store/store.effect';
+import { IonicStorageModule } from '@ionic/storage-angular';
+import { RouterModule } from '@angular/router';
+import { TabsComponent } from './modules/tabs/tabs.component';
+import { HomeTabComponent } from './modules/home/home-tab/home-tab.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TabsComponent, HomeTabComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -19,6 +23,8 @@ import { StoreEffect } from '@store/store.effect';
     HttpClientModule,
     StoreReducer,
     StoreEffect,
+    IonicStorageModule.forRoot(),
+    RouterModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

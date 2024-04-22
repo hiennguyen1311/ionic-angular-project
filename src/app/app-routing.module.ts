@@ -41,6 +41,18 @@ const routes: Routes = [
         (m) => m.TextRecongitionPageModule
       ),
   },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./modules/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'menu',
+    loadChildren: () => import('./modules/menu/menu.module').then( m => m.MenuPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./modules/profile/profile.module').then( m => m.ProfilePageModule)
+  },
 ];
 
 @NgModule({

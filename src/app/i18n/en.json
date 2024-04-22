@@ -18,6 +18,8 @@
     "TITLE": "Home",
     "SCAN_BARCODE": "Scan Barcode",
     "TEXT_RECONIGTION": "Text Recongition",
-    "LOGOUT": "Logout"
+    "LOGOUT": "Logout",
+    "TABS": "Tabs",
+    "MENU": "Menu"
   }
 }

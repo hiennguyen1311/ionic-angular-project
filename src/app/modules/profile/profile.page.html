@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+    
+    <ion-buttons slot="end">
+      <ion-menu-toggle> 
+        <ion-button>
+          <ion-icon name="menu"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container" id="main-content">
+    <ion-button expand="block" (click)="logout()">
+      {{titles.logout}}
+    </ion-button>
+  </div>
+</ion-content>
