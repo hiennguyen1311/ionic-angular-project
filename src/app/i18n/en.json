@@ -2,7 +2,8 @@
   "GLOBAL": {
     "MISSING_TRANSLATE": "*Missing Translation*",
     "OK": "Ok",
-    "CANCEL": "CANCEL"
+    "CANCEL": "CANCEL",
+    "PROCESSING": "Processing..."
   },
   "ERROR": {
     "WARNING_SYMBOL": "*"
@@ -17,9 +18,25 @@
   "HOME": {
     "TITLE": "Home",
     "SCAN_BARCODE": "Scan Barcode",
-    "TEXT_RECONIGTION": "Text Recongition",
+    "TEXT_RECOGNITION": "Text recognition",
     "LOGOUT": "Logout",
     "TABS": "Tabs",
-    "MENU": "Menu"
+    "MENU": "Menu",
+    "SCAN": "Scan",
+    "TEXT": "Recognition",
+    "PROFILE": "Profile"
+  },
+  "TEXT_RECOGNITION": {
+    "TITLE": "Text recognition",
+    "SELECT": "Select image",
+    "CAPTURE": "Capture",
+    "ANALYZE": "Analyze"
+  },
+  "SCAN": {
+    "TITLE": "Scan"
+  },
+  "PROFILE": {
+    "LOGOUT": "Logout",
+    "LOGOUT_CONFIRM": "Do you want to logout?"
   }
 }

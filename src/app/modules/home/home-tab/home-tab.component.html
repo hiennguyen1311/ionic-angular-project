@@ -1,13 +1,23 @@
+<app-menu-content side="end"></app-menu-content>
+
 <ion-content [fullscreen]="true">
   <ion-tabs>
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab="home-content">
         <ion-icon name="home"></ion-icon>
-          Home
+          {{titles.home}}
+      </ion-tab-button>
+      <ion-tab-button tab="scan">
+        <ion-icon name="scan"></ion-icon>
+        {{titles.scan}}
+      </ion-tab-button>
+      <ion-tab-button tab="text-recognition">
+        <ion-icon name="text"></ion-icon>
+        {{titles.text}}
       </ion-tab-button>
       <ion-tab-button tab="profile">
         <ion-icon name="person-circle"></ion-icon>
-          Profile
+        {{titles.profile}}
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>

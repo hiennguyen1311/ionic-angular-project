@@ -1,5 +1,6 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
+import i18n from '@i18n/i18n';
 import { BarcodeScanningModalComponent } from '@modules/barcode-scanning/barcode-scanning-modal.component';
 import { BarcodeScanner } from '@plugins/MLKit/MLKitPlugins';
 import { Barcode, BarcodeFormat, LensFacing } from '@plugins/MLKit/definitions';
@@ -16,6 +17,9 @@ export class ScanPage implements OnInit {
   public barcodes: Barcode[] = [];
   public isSupported = false;
   public isPermissionGranted = false;
+  titles = {
+    title: i18n.t('SCAN.TITLE'),
+  };
 
   public formGroup = new UntypedFormGroup({
     formats: new UntypedFormControl([]),

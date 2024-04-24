@@ -4,6 +4,7 @@ import { NavController } from '@ionic/angular';
 import { ApplicationState } from '@models/store.interface';
 import { Store } from '@ngrx/store';
 import { LogoutAction } from '@store/login/login.actions';
+import { Dialog } from '@plugins/Dialog/Dialog';
 
 @Component({
   selector: 'app-profile',
@@ -13,6 +14,8 @@ import { LogoutAction } from '@store/login/login.actions';
 export class ProfilePage implements OnInit {
   titles = {
     logout: i18n.t('HOME.LOGOUT'),
+    logout_confirm: i18n.t('PROFILE.LOGOUT_CONFIRM'),
+    cancel: i18n.t('GLOBAL.CANCEL'),
   };
   constructor(
     private store: Store<ApplicationState>,
@@ -21,8 +24,16 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {}
 
-  logout() {
-    this.store.dispatch(LogoutAction());
-    this.navCtrl.navigateRoot('/login');
+  async logout() {
+    const { value } = await Dialog.confirm({
+      title: this.titles.logout,
+      message: this.titles.logout_confirm,
+      okButtonTitle: this.titles.logout,
+      cancelButtonTitle: this.titles.cancel,
+    });
+    if (value) {
+      this.store.dispatch(LogoutAction());
+      this.navCtrl.navigateRoot('/login');
+    }
   }
 }

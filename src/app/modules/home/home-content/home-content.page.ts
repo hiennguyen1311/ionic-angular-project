@@ -13,8 +13,6 @@ import { Store } from '@ngrx/store';
 export class HomeContentPage implements OnInit {
   titles = {
     main: i18n.t('HOME.TITLE'),
-    scan_barcode: i18n.t('HOME.SCAN_BARCODE'),
-    text_reconigtion: i18n.t('HOME.TEXT_RECONIGTION'),
     tabs: i18n.t('HOME.TABS'),
     menu: i18n.t('HOME.MENU'),
   };

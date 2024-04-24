@@ -7,6 +7,15 @@
 }
 
 .content {
-  height: 95%;
+  height: 90%;
   justify-content: space-between;
+}
+
+ion-item {
+  --background: #165ef020;
+  --border-radius: 8px;
+  --detail-icon-color: white;
+  --detail-icon-opacity: 1;
+  --detail-icon-font-size: 20px;
+  margin-bottom: 8px;
 }

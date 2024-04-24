@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Encoding, Filesystem } from '@capacitor/filesystem';
+import i18n from '@i18n/i18n';
 import camera, { CameraResultType } from '@plugins/Camera/camera';
 import imagePicker from '@plugins/ImagePlugin/ImagePicker';
 import MLKitPlugins from '@plugins/MLKit/MLKitPlugins';
@@ -16,6 +17,13 @@ export class TextRecongitionPage implements OnInit {
   public base64 = '';
   public loading = false;
   text = '';
+  titles = {
+    title: i18n.t('TEXT_RECOGNITION.TITLE'),
+    capture: i18n.t('TEXT_RECOGNITION.CAPTURE'),
+    select: i18n.t('TEXT_RECOGNITION.SELECT'),
+    analyze: i18n.t('TEXT_RECOGNITION.ANALYZE'),
+    processing: i18n.t('GLOBAL.PROCESSING'),
+  };
   constructor() {}
 
   ngOnInit() {}

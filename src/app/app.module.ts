@@ -12,10 +12,10 @@ import { StoreEffect } from '@store/store.effect';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { RouterModule } from '@angular/router';
 import { TabsComponent } from './modules/tabs/tabs.component';
-import { HomeTabComponent } from './modules/home/home-tab/home-tab.component';
+import { HomeTabModule } from '@modules/home/home-tab/home-tab.module';
 
 @NgModule({
-  declarations: [AppComponent, TabsComponent, HomeTabComponent],
+  declarations: [AppComponent, TabsComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -25,6 +25,7 @@ import { HomeTabComponent } from './modules/home/home-tab/home-tab.component';
     StoreEffect,
     IonicStorageModule.forRoot(),
     RouterModule,
+    HomeTabModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

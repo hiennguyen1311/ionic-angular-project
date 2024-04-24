@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePage } from './home.page';
+import { HomeTabModule } from './home-tab/home-tab.module';
 import { HomeTabComponent } from './home-tab/home-tab.component';
 
 const routes: Routes = [
@@ -18,6 +18,18 @@ const routes: Routes = [
         loadChildren: () =>
           import('./home-content/home-content.module').then(
             (m) => m.HomeContentPageModule
+          ),
+      },
+      {
+        path: 'scan',
+        loadChildren: () =>
+          import('../scan/scan.module').then((m) => m.ScanPageModule),
+      },
+      {
+        path: 'text-recognition',
+        loadChildren: () =>
+          import('../text-recongition/text-recongition.module').then(
+            (m) => m.TextRecongitionPageModule
           ),
       },
       {

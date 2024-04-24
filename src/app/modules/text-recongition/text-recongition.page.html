@@ -1,17 +1,21 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button default-href="#" class="ios"></ion-back-button>
+    <ion-title>{{titles.title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-toggle> 
+        <ion-button>
+          <ion-icon name="menu"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
     </ion-buttons>
-    <ion-title>Text Recongition</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div style="padding: 16px;">
-    <ion-button  (click)="selectImage()">Select Image</ion-button>
-    <ion-button  (click)="capture()">Capture</ion-button>
-    <ion-button [disabled]="disableAnalyze" (click)="analyzeImage()">Analyze</ion-button>
+    <ion-button (click)="selectImage()">{{titles.select}}</ion-button>
+    <ion-button (click)="capture()">{{titles.capture}}</ion-button>
+    <ion-button [disabled]="disableAnalyze" (click)="analyzeImage()">{{titles.analyze}}</ion-button>
   </div>
 
   <ion-card *ngIf="image">
@@ -28,5 +32,5 @@
     </ion-text>
   </ion-card>
 
-  <ion-loading message="Processing..." [isOpen]="loading"></ion-loading>
+  <ion-loading [message]="titles.processing" [isOpen]="loading"></ion-loading>
 </ion-content>
