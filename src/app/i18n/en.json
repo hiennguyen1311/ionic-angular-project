@@ -6,7 +6,8 @@
     "PROCESSING": "Processing..."
   },
   "ERROR": {
-    "WARNING_SYMBOL": "*"
+    "WARNING_SYMBOL": "*",
+    "ERROR_UNDEFINED": "Error undefined"
   },
   "LOGIN": {
     "TITLE": "Login",

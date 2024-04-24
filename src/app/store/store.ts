@@ -7,7 +7,8 @@ import { Store } from '@ngrx/store';
 export { Observable } from 'rxjs';
 export { select } from '@ngrx/store';
 
-export const ApplicationStore = Store<ApplicationState>;
+export class ApplicationStore extends Store<ApplicationState> {}
+
 export const action = <T>(type: string, payload: T) => {
   return {
     type,

@@ -4,6 +4,7 @@ export interface ApplicationState {
 
 export interface LoginState {
   token: string;
+  loading: boolean;
 }
 
 export interface ActionSuccessResponse<T = any> {

@@ -33,7 +33,6 @@ export class ProfilePage implements OnInit {
     });
     if (value) {
       this.store.dispatch(LogoutAction());
-      this.navCtrl.navigateRoot('/login');
     }
   }
 }

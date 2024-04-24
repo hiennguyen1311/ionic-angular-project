@@ -1,1 +1,1 @@
-export { get } from 'lodash';
+export { get, isEmpty } from 'lodash';

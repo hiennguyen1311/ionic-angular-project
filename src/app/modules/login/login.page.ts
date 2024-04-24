@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LOCAL_STORAGE } from '@constant/enum';
 import i18n from '@i18n/i18n';
 import { ApplicationState } from '@models/store.interface';
 import { Store } from '@ngrx/store';
-import { AuthService } from '@services/auth/auth.service';
 import { LoginAction } from '@store/login/login.actions';
-import { ApplicationStore, Observable, select } from '@store/store';
+import { Observable, select } from '@store/store';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +12,7 @@ import { ApplicationStore, Observable, select } from '@store/store';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  token$: Observable<string>;
+  loading$: Observable<boolean>;
   title = i18n.t('LOGIN.TITLE');
   username = '';
   password = '';
@@ -27,22 +25,16 @@ export class LoginPage implements OnInit {
   token: string = '';
   loading = false;
 
-  constructor(
-    private store: Store<ApplicationState>,
-    private router: Router,
-    private authService: AuthService
-  ) {
-    this.token$ = store.pipe(select('login', 'token'));
-    this.token$.subscribe((message) => {
-      this.token = message;
-      if (message) {
-        this.loginSuccess();
-      }
+  constructor(private store: Store<ApplicationState>, private router: Router) {
+    this.loading$ = store.pipe(select('login', 'loading'));
+    this.loading$.subscribe((value) => {
+      this.loading = value;
     });
   }
 
+  ngOnInit() {}
+
   login() {
-    this.loading = true;
     this.store.dispatch(
       LoginAction({ username: this.username, password: this.password })
     );
@@ -55,11 +47,4 @@ export class LoginPage implements OnInit {
   onChangePassword(data: any) {
     this.password = data.target!.value;
   }
-
-  loginSuccess() {
-    this.loading = false;
-    setTimeout(() => this.router.navigate(['/home']), 200);
-  }
-
-  ngOnInit() {}
 }

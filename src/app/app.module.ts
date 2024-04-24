@@ -13,6 +13,8 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { RouterModule } from '@angular/router';
 import { TabsComponent } from './modules/tabs/tabs.component';
 import { HomeTabModule } from '@modules/home/home-tab/home-tab.module';
+import { AuthService } from '@services/auth/auth.service';
+import { AuthGuard } from '@services/auth/auth.guard';
 
 @NgModule({
   declarations: [AppComponent, TabsComponent],
@@ -27,7 +29,14 @@ import { HomeTabModule } from '@modules/home/home-tab/home-tab.module';
     RouterModule,
     HomeTabModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    AuthService,
+    AuthGuard,
+    {
+      provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

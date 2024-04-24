@@ -6,22 +6,23 @@ import {
   LoginActionFailure,
 } from './login.actions';
 import { of, switchMap, catchError } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { Api } from '@constant/api';
 
 @Injectable()
 export class LoginEffects {
+  constructor(private actions$: Actions, private http: HttpClient) {}
+
   loadData$ = createEffect(() =>
     this.actions$.pipe(
       ofType(LoginAction),
       switchMap(() =>
-        this.http.get('https://jsonplaceholder.typicode.com/posts').pipe(
+        this.http.get(Api.login).pipe(
           map((data) => LoginActionSuccess({ data })),
           catchError((error) => of(LoginActionSuccess({ data: {} })))
         )
       )
     )
   );
-
-  constructor(private actions$: Actions, private http: HttpClient) {}
 }

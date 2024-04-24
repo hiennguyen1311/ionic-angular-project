@@ -26,22 +26,6 @@ export class HomeContentPage implements OnInit {
 
   ngOnInit(): void {}
 
-  goToScan() {
-    this.navCtrl.navigateRoot('scan');
-  }
-
-  goToRecongnition() {
-    this.navCtrl.navigateRoot('text-recongition');
-  }
-
-  goToTabs() {
-    this.navCtrl.navigateRoot('tabs');
-  }
-
-  goToSideMenu() {
-    this.navCtrl.navigateRoot('menu');
-  }
-
   logout() {
     this.store.dispatch(LogoutAction());
     this.navCtrl.navigateRoot('/login');
