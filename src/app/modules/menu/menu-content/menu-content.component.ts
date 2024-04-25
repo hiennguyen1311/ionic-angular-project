@@ -2,8 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import i18n from '@i18n/i18n';
 import { NavController } from '@ionic/angular';
-import { ApplicationState } from '@models/store.interface';
-import { Store } from '@ngrx/store';
 import { AuthService } from '@services/auth/auth.service';
 
 @Component({
@@ -41,9 +39,9 @@ export class MenuContentComponent implements OnInit {
     logout_confirm: i18n.t('PROFILE.LOGOUT_CONFIRM'),
     cancel: i18n.t('GLOBAL.CANCEL'),
   };
+  version = 'Version 1.0';
   constructor(
     private router: Router,
-    private store: Store<ApplicationState>,
     public navCtrl: NavController,
     public authService: AuthService
   ) {
