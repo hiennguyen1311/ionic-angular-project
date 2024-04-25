@@ -1,45 +1,67 @@
+import { SplashScreen } from '@capacitor/splash-screen';
+import { Dialog } from '@plugins/Dialog/Dialog';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApplicationState } from '@models/store.interface';
 import { Store, select } from '@ngrx/store';
 import LocalStorage from '@plugins/LocalStorage/LocalStorage';
-import { LoginActionSuccess, LogoutAction } from '@store/login/login.actions';
+import {
+  LoginAction,
+  LoginActionSuccess,
+  LogoutAction,
+} from '@store/auth/auth.actions';
 import { isEmpty } from '@utils/util';
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
+import i18n from '@i18n/i18n';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private authSecretKey = 'token';
+  loading = false;
+  loading$: Observable<boolean>;
+  titles = {
+    logout: i18n.t('HOME.LOGOUT'),
+    logout_confirm: i18n.t('PROFILE.LOGOUT_CONFIRM'),
+    cancel: i18n.t('GLOBAL.CANCEL'),
+  };
 
   constructor(private store: Store<ApplicationState>, private router: Router) {
-    LocalStorage.get({ key: this.authSecretKey }).then((data) => {
-      if (!isEmpty(data.value)) {
-        this.store.dispatch(LoginActionSuccess({ data: data.value }));
-      }
+    this.loading$ = this.store.pipe(select('auth', 'loading'));
+    this.loading$.subscribe((value) => {
+      this.loading = value;
     });
   }
 
   public async getTokenFromStore() {
+    await SplashScreen.show();
     const { value } = await LocalStorage.get({ key: this.authSecretKey });
+    await SplashScreen.hide();
     if (!isEmpty(value)) {
       this.store.dispatch(LoginActionSuccess({ data: value }));
       return true;
     }
-    return this.store.pipe(
-      map((data) => {
-        console.log(data);
-        if (data.login.token) {
-          console.log('loginsuccess');
-          return true;
-        }
-        this.router.navigate(['/login']);
-        return false;
-      })
-    );
+    this.logout();
+    return false;
   }
 
-  public logout() {
-    this.router.navigate(['/login']);
-    this.store.dispatch(LogoutAction());
+  public login(username: string, password: string) {
+    this.store.dispatch(LoginAction({ username, password }));
+  }
+
+  public loginSuccess() {
+    this.router.navigate(['/home/home-content']);
+  }
+
+  public async logout() {
+    const { value } = await Dialog.confirm({
+      title: this.titles.logout,
+      message: this.titles.logout_confirm,
+      okButtonTitle: this.titles.logout,
+      cancelButtonTitle: this.titles.cancel,
+    });
+    if (value) {
+      this.store.dispatch(LogoutAction());
+      this.router.navigate(['/login']);
+    }
   }
 }

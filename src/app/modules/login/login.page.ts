@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import i18n from '@i18n/i18n';
-import { ApplicationState } from '@models/store.interface';
 import { Store } from '@ngrx/store';
-import { LoginAction } from '@store/login/login.actions';
-import { Observable, select } from '@store/store';
+import { AuthService } from '@services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +9,6 @@ import { Observable, select } from '@store/store';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  loading$: Observable<boolean>;
   title = i18n.t('LOGIN.TITLE');
   username = '';
   password = '';
@@ -23,21 +19,17 @@ export class LoginPage implements OnInit {
     password: i18n.t('LOGIN.PASSWORD'),
   };
   token: string = '';
-  loading = false;
 
-  constructor(private store: Store<ApplicationState>, private router: Router) {
-    this.loading$ = store.pipe(select('login', 'loading'));
-    this.loading$.subscribe((value) => {
-      this.loading = value;
-    });
-  }
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {}
 
+  loading() {
+    this.authService.loading;
+  }
+
   login() {
-    this.store.dispatch(
-      LoginAction({ username: this.username, password: this.password })
-    );
+    this.authService.login(this.username, this.password);
   }
 
   onChangeUsername(data: any) {

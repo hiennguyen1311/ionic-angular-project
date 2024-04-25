@@ -4,8 +4,7 @@ import i18n from '@i18n/i18n';
 import { NavController } from '@ionic/angular';
 import { ApplicationState } from '@models/store.interface';
 import { Store } from '@ngrx/store';
-import { Dialog } from '@plugins/Dialog/Dialog';
-import { LogoutAction } from '@store/login/login.actions';
+import { AuthService } from '@services/auth/auth.service';
 
 @Component({
   selector: 'app-menu-content',
@@ -45,7 +44,8 @@ export class MenuContentComponent implements OnInit {
   constructor(
     private router: Router,
     private store: Store<ApplicationState>,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    public authService: AuthService
   ) {
     this.currentRoute = this.router.url;
     this.router.events.subscribe((val: any) => {
@@ -62,14 +62,6 @@ export class MenuContentComponent implements OnInit {
   }
 
   async logout() {
-    const { value } = await Dialog.confirm({
-      title: this.titles.logout,
-      message: this.titles.logout_confirm,
-      okButtonTitle: this.titles.logout,
-      cancelButtonTitle: this.titles.cancel,
-    });
-    if (value) {
-      this.store.dispatch(LogoutAction());
-    }
+    this.authService.logout;
   }
 }

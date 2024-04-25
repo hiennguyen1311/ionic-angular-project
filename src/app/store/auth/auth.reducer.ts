@@ -1,20 +1,19 @@
-import { Action, createReducer, on } from '@ngrx/store';
-import ActionsName from '@constant/actionName';
-import { LoginState } from '@models/store.interface';
+import { createReducer, on } from '@ngrx/store';
+import { AuthState } from '@models/store.interface';
 import {
   LoginAction,
   LoginActionFailure,
   LoginActionSuccess,
   LogoutAction,
-} from './login.actions';
+} from './auth.actions';
 import LocalStorage from '@plugins/LocalStorage/LocalStorage';
 
-export const initialState: LoginState = {
+export const initialState: AuthState = {
   token: '',
   loading: false,
 };
 
-export const LoginReducer = createReducer(
+export const AuthReducer = createReducer(
   initialState,
   on(LoginAction, (state) => {
     return {

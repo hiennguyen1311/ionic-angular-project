@@ -1423,6 +1423,11 @@
   resolved "https://registry.yarnpkg.com/@capacitor/preferences/-/preferences-5.0.7.tgz#a24c5a0b82fc5d07455b1a18cd8a28cc173f976e"
   integrity sha512-JvfGP1m8nITWEFdBpKR9HXNeBjLKwO0q1pry7Z5lYrYmCrbyRBLWzaGZGll8py4KmGWL3F5+PZvhrpT4gPoeAQ==
 
+"@capacitor/splash-screen@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/splash-screen/-/splash-screen-6.0.0.tgz#15a66cb27f9b99076845113188cead77ad1c0864"
+  integrity sha512-ZGgbT1j6opz1xCnMHnERnBd33aQTuepOXuDHMiKgZGlOluviBFOyOcnMnWjEwavg8PSiYSPSmVSwjxW7L6mXsg==
+
 "@capacitor/status-bar@5.0.7":
   version "5.0.7"
   resolved "https://registry.yarnpkg.com/@capacitor/status-bar/-/status-bar-5.0.7.tgz#a341e8dec9f93769bed4a42e8ad397e5df1b5287"

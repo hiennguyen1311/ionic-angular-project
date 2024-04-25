@@ -1,8 +1,8 @@
 export interface ApplicationState {
-  login: LoginState;
+  auth: AuthState;
 }
 
-export interface LoginState {
+export interface AuthState {
   token: string;
   loading: boolean;
 }

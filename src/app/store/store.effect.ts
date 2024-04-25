@@ -1,4 +1,4 @@
 import { EffectsModule } from '@ngrx/effects';
-import { LoginEffects } from './login/login.effect';
+import { AuthEffects } from './auth/auth.effect';
 
-export const StoreEffect = EffectsModule.forRoot([LoginEffects]);
+export const StoreEffect = EffectsModule.forRoot([AuthEffects]);

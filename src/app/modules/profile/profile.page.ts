@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import i18n from '@i18n/i18n';
-import { NavController } from '@ionic/angular';
-import { ApplicationState } from '@models/store.interface';
-import { Store } from '@ngrx/store';
-import { LogoutAction } from '@store/login/login.actions';
-import { Dialog } from '@plugins/Dialog/Dialog';
+import { AuthService } from '@services/auth/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -17,22 +13,11 @@ export class ProfilePage implements OnInit {
     logout_confirm: i18n.t('PROFILE.LOGOUT_CONFIRM'),
     cancel: i18n.t('GLOBAL.CANCEL'),
   };
-  constructor(
-    private store: Store<ApplicationState>,
-    public navCtrl: NavController
-  ) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {}
 
   async logout() {
-    const { value } = await Dialog.confirm({
-      title: this.titles.logout,
-      message: this.titles.logout_confirm,
-      okButtonTitle: this.titles.logout,
-      cancelButtonTitle: this.titles.cancel,
-    });
-    if (value) {
-      this.store.dispatch(LogoutAction());
-    }
+    this.authService.logout();
   }
 }

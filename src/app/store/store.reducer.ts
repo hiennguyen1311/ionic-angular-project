@@ -1,7 +1,7 @@
 import { ApplicationState } from '@models/store.interface';
 import { StoreModule } from '@ngrx/store';
-import { LoginReducer } from './login/login.reducer';
+import { AuthReducer } from './auth/auth.reducer';
 
 export const StoreReducer = StoreModule.forRoot<ApplicationState>({
-  login: LoginReducer,
+  auth: AuthReducer,
 });

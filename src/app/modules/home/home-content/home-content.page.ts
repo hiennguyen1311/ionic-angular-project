@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LogoutAction } from '@store/login/login.actions';
 import i18n from '@i18n/i18n';
 import { NavController, Platform } from '@ionic/angular';
 import { ApplicationState } from '@models/store.interface';
@@ -25,9 +24,4 @@ export class HomeContentPage implements OnInit {
   }
 
   ngOnInit(): void {}
-
-  logout() {
-    this.store.dispatch(LogoutAction());
-    this.navCtrl.navigateRoot('/login');
-  }
 }
