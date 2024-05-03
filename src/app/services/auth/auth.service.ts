@@ -40,7 +40,7 @@ export class AuthService {
       this.store.dispatch(LoginActionSuccess({ data: value }));
       return true;
     }
-    this.logout();
+    this.handleLogout();
     return false;
   }
 
@@ -49,7 +49,12 @@ export class AuthService {
   }
 
   public loginSuccess() {
-    this.router.navigate(['/home/home-content']);
+    this.router.navigate(['/main']);
+  }
+
+  public handleLogout() {
+    this.store.dispatch(LogoutAction());
+    this.router.navigate(['/login']);
   }
 
   public async logout() {
@@ -60,8 +65,7 @@ export class AuthService {
       cancelButtonTitle: this.titles.cancel,
     });
     if (value) {
-      this.store.dispatch(LogoutAction());
-      this.router.navigate(['/login']);
+      this.handleLogout();
     }
   }
 }

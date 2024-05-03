@@ -38,6 +38,7 @@ export class MenuContentComponent implements OnInit {
     logout: i18n.t('HOME.LOGOUT'),
     logout_confirm: i18n.t('PROFILE.LOGOUT_CONFIRM'),
     cancel: i18n.t('GLOBAL.CANCEL'),
+    title: i18n.t('HOME.MENU'),
   };
   version = 'Version 1.0';
   constructor(
@@ -60,6 +61,6 @@ export class MenuContentComponent implements OnInit {
   }
 
   async logout() {
-    this.authService.logout;
+    await this.authService.logout();
   }
 }

@@ -18,6 +18,6 @@ export class ProfilePage implements OnInit {
   ngOnInit() {}
 
   async logout() {
-    this.authService.logout();
+    await this.authService.logout();
   }
 }

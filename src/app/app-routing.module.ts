@@ -6,7 +6,13 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home',
+    redirectTo: 'main',
+  },
+  {
+    path: 'main',
+    loadChildren: () =>
+      import('./modules/main/main.module').then((m) => m.MainPageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'home',
@@ -60,6 +66,10 @@ const routes: Routes = [
         (m) => m.ProfilePageModule
       ),
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'languages',
+    loadChildren: () => import('./modules/languages/languages.module').then( m => m.LanguagesPageModule)
   },
 ];
 

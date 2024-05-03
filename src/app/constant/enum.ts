@@ -4,4 +4,5 @@ export enum API_RESPONSE {
 
 export enum LOCAL_STORAGE {
   TOKEN = 'token',
+  LANGUAGE = 'language',
 }

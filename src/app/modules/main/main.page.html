@@ -1,0 +1,13 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{titles.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="container">
+    <ion-list>
+      <ion-button class="button-item" *ngFor="let button of buttons" expand="block" (click)="goToPage(button.page)">{{button.title}}</ion-button>
+    </ion-list>
+  </div>
+</ion-content>

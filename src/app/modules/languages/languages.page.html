@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#" class="ios"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>{{titles.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="container">
+    <ion-radio-group   [value]="Language.id">
+      <ion-item  *ngFor="let language of languages" button (click)="handleChange(language.code)">
+        <ion-radio [value]="language.code">{{language.flag}} {{language.fullName.toUpperCase()}}</ion-radio><br />
+      </ion-item>
+    </ion-radio-group>
+  </div>
+</ion-content>

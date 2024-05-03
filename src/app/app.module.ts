@@ -15,6 +15,7 @@ import { TabsComponent } from './modules/tabs/tabs.component';
 import { HomeTabModule } from '@modules/home/home-tab/home-tab.module';
 import { AuthService } from '@services/auth/auth.service';
 import { AuthGuard } from '@services/auth/auth.guard';
+import { LanguageService } from '@services/language/language.service';
 
 @NgModule({
   declarations: [AppComponent, TabsComponent],
@@ -36,6 +37,7 @@ import { AuthGuard } from '@services/auth/auth.guard';
       provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy,
     },
+    LanguageService,
   ],
   bootstrap: [AppComponent],
 })

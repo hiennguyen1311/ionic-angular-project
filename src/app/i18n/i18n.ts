@@ -1,5 +1,6 @@
 import { Scope, TranslateOptions, I18n } from 'i18n-js';
 import * as en from './en.json';
+import * as vi from './vi.json';
 const i18n = new I18n();
 i18n.locale = 'en';
 i18n.translations = { en };
@@ -30,15 +31,15 @@ export const translate = (scope: Scope, options?: Options) => {
 i18n.t = translate;
 
 export const setI18nConfig = async (lang: string) => {
-  let language = en;
   switch (lang) {
     case 'en':
-      language = en;
-      i18n.translations = { en: language };
+      i18n.translations = { en };
+      break;
+    case 'vi':
+      i18n.translations = { vi };
       break;
     default: {
-      language = en;
-      i18n.translations = { en: language };
+      i18n.translations = { en };
       break;
     }
   }
