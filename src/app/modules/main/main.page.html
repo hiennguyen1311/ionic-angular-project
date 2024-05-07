@@ -1,6 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>{{titles.title | translate}}</ion-title>
+    <ion-button fill="outline" color="danger" class="ion-padding-end" slot="end" (click)="logout()">{{'PROFILE.LOGOUT' | translate}}</ion-button>
   </ion-toolbar>
 </ion-header>
 

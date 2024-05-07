@@ -21,11 +21,11 @@ export const AuthReducer = createReducer(
       loading: true,
     };
   }),
-  on(LoginActionSuccess, (state, {}) => {
-    LocalStorage.set({ key: 'token', value: 'token' });
+  on(LoginActionSuccess, (state, { data }) => {
+    LocalStorage.set({ key: 'token', value: data.token });
     return {
       ...state,
-      token: 'token',
+      token: data.token,
       loading: false,
     };
   }),

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -22,12 +22,14 @@ import {
   TranslateModule,
 } from '@ngx-translate/core';
 import {
-  HttpLoaderFactory,
   MyMissingTranslationHandler,
   TranslateLoader,
   createTranslateLoader,
 } from '@services/language/translate.service';
 import { DEFAULT_LANGUAGE_CODE } from '@constant/constant';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import environment from '@src/environments/environment';
 
 @NgModule({
   declarations: [AppComponent, TabsComponent],
@@ -47,7 +49,7 @@ import { DEFAULT_LANGUAGE_CODE } from '@constant/constant';
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
+        useFactory: createTranslateLoader,
         deps: [HttpClient],
       },
       defaultLanguage: DEFAULT_LANGUAGE_CODE,
@@ -56,6 +58,10 @@ import { DEFAULT_LANGUAGE_CODE } from '@constant/constant';
         useClass: MyMissingTranslationHandler,
       },
     }),
+    provideFirebaseApp(() =>
+      initializeApp({ apiKey: environment.firebaseKey })
+    ),
+    provideAuth(() => getAuth()),
   ],
   providers: [
     AuthService,
@@ -67,5 +73,6 @@ import { DEFAULT_LANGUAGE_CODE } from '@constant/constant';
     LanguageService,
   ],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

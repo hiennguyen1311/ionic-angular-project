@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '@services/auth/auth.service';
 
 @Component({
   selector: 'app-main',
@@ -17,13 +18,21 @@ export class MainPage implements OnInit {
     { title: 'MAIN.TABS', page: '/tabs' },
     { title: 'LANGUAGES.TITLE', page: '/languages' },
     { title: 'MAIN.NATIVE', page: '/tabs' },
+    { title: 'MAIN.API_MANAGEMENT', page: '/tabs' },
+    { title: 'MAIN.GOOGLE_MAP', page: '/tabs' },
+    { title: 'MAIN.NETWORK', page: '/tabs' },
+    { title: 'MAIN.DEVICE_INFORMATION', page: '/tabs' },
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {}
 
   goToPage(route: string) {
     this.router.navigate([route]);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

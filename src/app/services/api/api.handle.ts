@@ -1,4 +1,5 @@
 import i18n from '@i18n/i18n';
+import { IResponseAPI } from '@models/interface';
 import { get } from '@utils/util';
 
 export function handleApiResponse(res: IResponseAPI<any>) {

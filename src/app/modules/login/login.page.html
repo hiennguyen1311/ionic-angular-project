@@ -12,7 +12,9 @@
       </ion-item>
     
       <ion-item>
-        <ion-input [label]="titles.password" [placeholder]="titles.password" type="password" value="password" (ionInput)="onChangePassword($event)"></ion-input>
+        <ion-input [label]="titles.password" [placeholder]="titles.password" [type]="showPassword ? 'text' : 'password'" [value]="password" (ionInput)="onChangePassword($event)" (keyup.enter)="login()" >
+        </ion-input>
+        <ion-icon *ngIf="password.length > 0" color="primary" [name]="showPassword ? 'eye-off-outline' : 'eye-outline'" slot="end" (click)="toggleShowPassword()"></ion-icon>
       </ion-item>
     </ion-list>
   </ion-card>

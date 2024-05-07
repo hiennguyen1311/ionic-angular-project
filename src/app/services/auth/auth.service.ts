@@ -37,7 +37,7 @@ export class AuthService {
     const { value } = await LocalStorage.get({ key: this.authSecretKey });
     await SplashScreen.hide();
     if (!isEmpty(value)) {
-      this.store.dispatch(LoginActionSuccess({ data: value }));
+      this.store.dispatch(LoginActionSuccess({ data: { token: value } }));
       return true;
     }
     this.handleLogout();
@@ -50,6 +50,13 @@ export class AuthService {
 
   public loginSuccess() {
     this.router.navigate(['/main']);
+  }
+
+  public loginFailure(error: string) {
+    Dialog.alert({
+      title: i18n.t('GLOBAL.ERROR'),
+      message: i18n.t('ERROR.INVALID_LOGIN'),
+    });
   }
 
   public handleLogout() {

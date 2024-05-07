@@ -12,6 +12,7 @@ export class LoginPage implements OnInit {
   title = i18n.t('LOGIN.TITLE');
   username = '';
   password = '';
+  showPassword = false;
   public readonly titles = {
     signup: i18n.t('LOGIN.SIGN_UP'),
     forgot_password: i18n.t('LOGIN.FORGOT_PASSWORD'),
@@ -26,6 +27,10 @@ export class LoginPage implements OnInit {
 
   loading() {
     this.authService.loading;
+  }
+
+  toggleShowPassword() {
+    this.showPassword = !this.showPassword;
   }
 
   login() {

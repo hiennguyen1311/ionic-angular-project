@@ -3,11 +3,13 @@
     "MISSING_TRANSLATE": "*Missing Translation*",
     "OK": "Ok",
     "CANCEL": "CANCEL",
-    "PROCESSING": "Processing..."
+    "PROCESSING": "Processing...",
+    "ERROR": "Error"
   },
   "ERROR": {
     "WARNING_SYMBOL": "*",
-    "ERROR_UNDEFINED": "Error undefined"
+    "ERROR_UNDEFINED": "Error undefined",
+    "INVALID_LOGIN": "Invalid Credentials. Please check login information."
   },
   "LOGIN": {
     "TITLE": "Login",
@@ -45,7 +47,11 @@
     "TITLE": "List of Features",
     "MENU": "Menu UI",
     "TABS": "Tabs UI",
-    "NATIVE": "Native APIS Example"
+    "NATIVE": "Native APIS Example",
+    "API_MANAGEMENT": "API Management",
+    "GOOGLE_MAP": "Google Map",
+    "NETWORK": "Network",
+    "DEVICE_INFORMATION": "Device Information"
   },
   "LANGUAGES": {
     "TITLE": "Languages"

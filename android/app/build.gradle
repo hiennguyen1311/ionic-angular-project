@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     namespace "io.ionic.starter"
@@ -66,7 +67,8 @@ dependencies {
     implementation 'com.google.maps.android:maps-utils-ktx'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core'
-
+    implementation platform('com.google.firebase:firebase-bom:33.0.0')
+    implementation 'com.google.firebase:firebase-analytics'
 }
 
 apply from: 'capacitor.build.gradle'
