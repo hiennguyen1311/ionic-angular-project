@@ -1,0 +1,13 @@
+export { AppLauncher } from '@capacitor/app-launcher';
+export { App } from '@capacitor/app';
+export { Clipboard } from '@capacitor/clipboard';
+export { Device } from '@capacitor/device';
+export { Geolocation } from '@capacitor/geolocation';
+export { GoogleMap } from '@capacitor/google-maps';
+export { Network } from '@capacitor/network';
+export { LocalNotifications } from '@capacitor/local-notifications';
+export { PushNotifications } from '@capacitor/push-notifications';
+export { ScreenOrientation } from '@capacitor/screen-orientation';
+export { Share } from '@capacitor/share';
+export { StatusBar } from '@capacitor/status-bar';
+export { Toast } from '@capacitor/toast';

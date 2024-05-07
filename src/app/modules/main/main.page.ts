@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import i18n from '@i18n/i18n';
 
 @Component({
   selector: 'app-main',
@@ -9,15 +8,15 @@ import i18n from '@i18n/i18n';
 })
 export class MainPage implements OnInit {
   titles = {
-    title: i18n.t('MAIN.TITLE'),
-    home: i18n.t('HOME.TITLE'),
+    title: 'MAIN.TITLE',
+    home: 'HOME.TITLE',
   };
   buttons = [
-    { title: i18n.t('HOME.TITLE'), page: '/home' },
-    { title: i18n.t('MAIN.MENU'), page: '/menu' },
-    { title: i18n.t('MAIN.TABS'), page: '/tabs' },
-    { title: i18n.t('LANGUAGES.TITLE'), page: '/languages' },
-    { title: i18n.t('MAIN.NATIVE'), page: '/tabs' },
+    { title: 'HOME.TITLE', page: '/home' },
+    { title: 'MAIN.MENU', page: '/menu' },
+    { title: 'MAIN.TABS', page: '/tabs' },
+    { title: 'LANGUAGES.TITLE', page: '/languages' },
+    { title: 'MAIN.NATIVE', page: '/tabs' },
   ];
 
   constructor(private router: Router) {}

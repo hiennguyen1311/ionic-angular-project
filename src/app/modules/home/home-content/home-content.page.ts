@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import i18n from '@i18n/i18n';
 import { NavController, Platform } from '@ionic/angular';
-import { ApplicationState } from '@models/store.interface';
-import { Store } from '@ngrx/store';
+import {
+  ActionSheet,
+  ActionSheetButtonStyle,
+} from '@plugins/ActionSheet/ActionSheetPlugin';
 
 @Component({
   selector: 'app-home-content',
@@ -14,14 +16,33 @@ export class HomeContentPage implements OnInit {
     main: i18n.t('HOME.TITLE'),
     tabs: i18n.t('HOME.TABS'),
     menu: i18n.t('HOME.MENU'),
+    content: i18n.t('HOME.CONTENT'),
+    action_sheet: 'Show Action Sheet',
+    show_camera: 'Show Camera',
+    show_browser: 'Show Browser',
   };
-  constructor(
-    public navCtrl: NavController,
-    private store: Store<ApplicationState>,
-    private platform: Platform
-  ) {
+  constructor(public navCtrl: NavController, private platform: Platform) {
     this.platform.backButton.subscribeWithPriority(5, () => {});
   }
 
   ngOnInit(): void {}
+
+  async showActionSheetActions() {
+    const result = await ActionSheet.showActions({
+      title: 'Photo Options',
+      message: 'Select an option to perform',
+      options: [
+        {
+          title: 'Upload',
+        },
+        {
+          title: 'Share',
+        },
+        {
+          title: 'Remove',
+          style: ActionSheetButtonStyle.Destructive,
+        },
+      ],
+    });
+  }
 }

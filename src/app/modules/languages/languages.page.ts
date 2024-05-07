@@ -13,7 +13,7 @@ import { ChangeLanguageAction } from '@store/language.ts/language.action';
 })
 export class LanguagesPage implements OnInit {
   titles = {
-    title: this.Language.t('LANGUAGES.TITLE'),
+    title: 'LANGUAGES.TITLE',
   };
   languages = Languages;
   constructor(public Language: LanguageService) {}

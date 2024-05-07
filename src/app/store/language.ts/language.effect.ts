@@ -9,6 +9,7 @@ import { actionNameSuccess } from '@store/store';
 import ActionsName from '@constant/actionName';
 import { Store, select } from '@ngrx/store';
 import { ApplicationState } from '@models/store.interface';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class LanguageEffects {
@@ -16,7 +17,8 @@ export class LanguageEffects {
   id = 'EN';
   constructor(
     private actions$: Actions,
-    private store: Store<ApplicationState>
+    private store: Store<ApplicationState>,
+    private translate: TranslateService
   ) {
     this.id$ = this.store.pipe(select('language', 'id'));
     this.id$.subscribe((value) => {
@@ -33,6 +35,7 @@ export class LanguageEffects {
           value: action.id,
         });
         setI18nConfig(action.id);
+        this.translate.use(action.id);
 
         return {
           type: actionNameSuccess(ActionsName.CHANGE_LANGUAGE),
