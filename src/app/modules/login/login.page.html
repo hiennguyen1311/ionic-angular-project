@@ -1,28 +1,85 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>{{title}}</ion-title>
+
+    <ion-item slot="end" lines="none">
+      <app-languages-popup-menu></app-languages-popup-menu>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="container">
-  <ion-card>
-    <ion-list>
-      <ion-item>
-        <ion-input [label]="titles.username" [placeholder]="titles.username" [value]="username" (ionInput)="onChangeUsername($event)"></ion-input>
-      </ion-item>
-    
-      <ion-item>
-        <ion-input [label]="titles.password" [placeholder]="titles.password" [type]="showPassword ? 'text' : 'password'" [value]="password" (ionInput)="onChangePassword($event)" (keyup.enter)="login()" >
-        </ion-input>
-        <ion-icon *ngIf="password.length > 0" color="primary" [name]="showPassword ? 'eye-off-outline' : 'eye-outline'" slot="end" (click)="toggleShowPassword()"></ion-icon>
-      </ion-item>
-    </ion-list>
-  </ion-card>
-  <div class="buttons">
-    <ion-button expand="block"  (click)="login()">{{title}}</ion-button>
-    <ion-button expand="block">{{titles.signup}}</ion-button>
-    <ion-button expand="full" fill="clear">{{titles.forgot_password}}</ion-button>
+  <div class="ion-margin-top center">
+    <ion-icon  class="logo" name="logo-ionic"></ion-icon>
+  </div>
+  <div class="center">
+    <ion-text ><h1>Ionic Sample</h1></ion-text>
   </div>
 
-  <ion-loading [isOpen]="loading()" ></ion-loading>
+  <form [formGroup]="form" (ngSubmit)="login()">
+    <div class="ion-padding">
+      <ion-input
+        formControlName="username"
+        [class.is-invalid] = "form?.get('username')?.invalid && form?.get('username')?.touched"
+        class="form-control"
+        ngModel email="true"
+        required="true"
+        type="email"
+        fill="outline"
+        class="custom"
+        label-placement="floating"
+        mode="md"
+        color="medium"
+        [label]="titles.username" [placeholder]="titles.username" [value]="username" (ionInput)="onChangeUsername($event)"></ion-input>
+      <div *ngIf="username_form?.touched  && username_form?.invalid" class="ion-margin-top">
+        <ion-text color="danger" *ngIf="username_form?.errors?.['required']" class="text-danger">{{'ERROR.VALIDATIONS.EMAIL_REQUIRED' | translate}}</ion-text>
+        <ion-text color="danger" *ngIf="username_form?.errors?.['email']" class="text-danger">{{'ERROR.VALIDATIONS.EMAIL_INVALID' | translate}}</ion-text>
+      </div>
+
+    <ion-input
+      formControlName="password"
+      [class.is-invalid] = "form?.get('password')?.invalid && form?.get('password')?.touched"
+      class="form-control"
+      required="true"
+      fill="outline"
+      class="custom ion-margin-top"
+      label-placement="floating"
+      mode="md"
+      color="medium"
+      [label]="titles.password" [placeholder]="titles.password" [type]="showPassword ? 'text' : 'password'" [value]="password" (ionInput)="onChangePassword($event)" (keyup.enter)="login()" >
+      <ion-icon *ngIf="password.length" size="medium" color="dark" [name]="showPassword ? 'eye-off' : 'eye'" slot="end" (click)="toggleShowPassword()"></ion-icon>
+    </ion-input>
+    <div *ngIf="password_form?.touched && password_form?.invalid" class="ion-margin-top">
+      <ion-text color="danger" *ngIf="password_form?.errors?.['required']" class="text-danger">{{'ERROR.VALIDATIONS.PASSWORD_REQUIRED' | translate}}</ion-text>
+    </div>
+  </div>
+
+    <div class="buttons">
+      <ion-button expand="block" type="submit" color="dark">{{title}}</ion-button>
+
+      <ion-button expand="block" fill="outline"  color="dark">{{titles.signup}}</ion-button>
+
+      <ion-button expand="full" fill="clear" slot="end" color="dark">{{titles.forgot_password}}</ion-button>
+
+      <div class="ion-padding-top ion-padding-bottom divider">
+        <div class="hr"></div>
+        <ion-text>{{'LOGIN.CONTENT' | translate}}</ion-text>
+        <div class="hr"></div>
+      </div>
+
+      <div id="sign-in" class="ion-align-items-center flex-container">
+        <ion-button fill="outline" slot="icon-only" class="btn-icon" color="danger" (click)="authService.loginWithGoogle()">
+          <ion-icon name="logo-google"></ion-icon>
+        </ion-button>
+        <ion-button  fill="outline" slot="icon-only" class="btn-icon" color="dark">
+          <ion-icon name="logo-apple"></ion-icon>
+        </ion-button>
+        <ion-button  fill="outline" slot="icon-only" class="btn-icon">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+
+    <ion-loading [isOpen]="loading()" ></ion-loading>
+  </form>
 </ion-content>

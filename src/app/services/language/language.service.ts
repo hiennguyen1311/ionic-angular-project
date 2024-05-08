@@ -14,6 +14,8 @@ export class LanguageService {
   languages = Languages;
   id$;
   id = DEFAULT_LANGUAGE_CODE;
+  flag = '';
+  name = '';
   constructor(
     private store: Store<ApplicationState>,
     private translateService: TranslateService
@@ -21,6 +23,8 @@ export class LanguageService {
     this.id$ = this.store.pipe(select('language', 'id'));
     this.id$.subscribe((value) => {
       this.id = value;
+      this.flag = this.languages.find((i) => i.code === value)?.flag || '';
+      this.name = this.languages.find((i) => i.code === value)?.fullName || '';
     });
     this.init();
     translateService.setDefaultLang(DEFAULT_LANGUAGE_CODE);

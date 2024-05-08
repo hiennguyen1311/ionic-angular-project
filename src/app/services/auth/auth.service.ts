@@ -45,7 +45,13 @@ export class AuthService {
   }
 
   public login(username: string, password: string) {
-    this.store.dispatch(LoginAction({ username, password }));
+    this.store.dispatch(
+      LoginAction({ credentials: { username, password, type: 'email' } })
+    );
+  }
+
+  public loginWithGoogle() {
+    this.store.dispatch(LoginAction({ credentials: { type: 'google' } }));
   }
 
   public loginSuccess() {
@@ -55,7 +61,7 @@ export class AuthService {
   public loginFailure(error: string) {
     Dialog.alert({
       title: i18n.t('GLOBAL.ERROR'),
-      message: i18n.t('ERROR.INVALID_LOGIN'),
+      message: error,
     });
   }
 

@@ -1,0 +1,14 @@
+<div>
+  <ion-button color="dark" fill="outline" id="click-trigger">{{Language.id + " " + Language.flag}}</ion-button>
+  <ion-popover trigger="click-trigger" triggerAction="click">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <ion-radio-group [value]="Language.id">
+          <ion-item  *ngFor="let language of Language.languages" button (click)="Language.handleChange(language.code)">
+            <ion-radio [value]="language.code">{{language.flag}} {{language.fullName.toUpperCase()}}</ion-radio><br />
+          </ion-item>
+        </ion-radio-group>
+      </ion-content>
+    </ng-template>
+  </ion-popover>
+</div>

@@ -9,3 +9,48 @@
 .buttons {
   padding: 16px
 }
+
+.btn-icon {
+  flex: 1;
+}
+
+.flex-container {
+  display: flex;
+  flex: 1;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  font-size: 64px;
+}
+
+ion-input.custom {
+  --background: #f2f2f2;
+  --color: #737373;
+  --placeholder-color: #ddd;
+  --placeholder-opacity: 0.8;
+  --border-color: #f2f2f2;
+}
+
+.divider {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.hr {
+  flex: 1;
+  background: #737373;
+  height: 1px;
+  margin-left: 16px;
+  margin-right: 16px;
+}

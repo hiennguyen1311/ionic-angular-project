@@ -1,4 +1,5 @@
 import ActionsName from '@constant/actionName';
+import { FirebaseCredentials } from '@models/models';
 import {
   ActionFailureResponse,
   ActionSuccessResponse,
@@ -13,7 +14,7 @@ import {
 
 export const LoginAction = createAction(
   ActionsName.LOGIN,
-  props<{ username: string; password: string }>()
+  props<{ credentials: FirebaseCredentials }>()
 );
 
 export const LoginActionSuccess = createAction(
@@ -27,3 +28,13 @@ export const LoginActionFailure = createAction(
 );
 
 export const LogoutAction = createAction(ActionsName.LOGOUT);
+
+export const LogoutActionSuccess = createAction(
+  actionNameSuccess(ActionsName.LOGOUT),
+  props<ActionSuccessResponse>()
+);
+
+export const LogoutActionFailure = createAction(
+  actionNameFailure(ActionsName.LOGOUT),
+  props<ActionFailureResponse>()
+);

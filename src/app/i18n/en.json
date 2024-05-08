@@ -9,14 +9,21 @@
   "ERROR": {
     "WARNING_SYMBOL": "*",
     "ERROR_UNDEFINED": "Error undefined",
-    "INVALID_LOGIN": "Invalid Credentials. Please check login information."
+    "INVALID_LOGIN": "Invalid Credentials. Please check login information.",
+    "VALIDATIONS": {
+      "EMAIL_REQUIRED": "Email is required",
+      "EMAIL_INVALID": "Please provide a valid email address",
+      "PASSWORD_REQUIRED": "Password is required"
+    }
   },
   "LOGIN": {
     "TITLE": "Login",
     "SIGN_UP": "Sign Up",
     "FORGOT_PASSWORD": "Forgot password?",
     "USERNAME": "Username",
-    "PASSWORD": "Password"
+    "PASSWORD": "Password",
+    "CONTENT": "Or login with",
+    "EMAIL": "Email"
   },
   "HOME": {
     "TITLE": "Home",
