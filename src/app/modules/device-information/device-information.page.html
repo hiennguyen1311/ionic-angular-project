@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{"DEVICE_INFORMATION.TITLE" | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card class="ion-padding">
+    <ion-item class="custom">
+      <ion-text>{{ "DEVICE_INFORMATION.BATTERY" | translate: { battery: battery } }}</ion-text>
+      <ion-icon slot="end" [name]="battery === 100 ? 'battery-full-sharp' : 'battery-half-sharp'"></ion-icon>
+    </ion-item>
+    <ion-item class="custom">
+      <ion-text>{{ "DEVICE_INFORMATION.IS_CHARGING" | translate: { is_charging: isCharging } }}</ion-text>
+      <ion-icon slot="end" [name]="isCharging ? 'battery-charging-sharp' : 'battery-dead-sharp'"></ion-icon>
+    </ion-item>
+    <ion-item button="true" class="custom" (click)="copy(id)">
+      <ion-text>{{ "DEVICE_INFORMATION.ID" | translate: { id: id } }}</ion-text>
+      <ion-icon slot="end" name="phone-portrait-sharp"></ion-icon>
+    </ion-item>
+    <div class="custom">
+      <ion-item button="true" *ngFor="let infoItem of info" (click)="copy(infoItem)">
+        <ion-text>{{infoItem.title + ": " + infoItem.value }}</ion-text>
+      </ion-item>
+    </div>
+    <ion-item button="true" class="custom" (click)="copy(langCode)">
+      <ion-text>{{ "DEVICE_INFORMATION.LANGUAGE" | translate: { language: langCode } }}</ion-text>
+      <ion-icon slot="end" name="language-sharp"></ion-icon>
+    </ion-item>
+    <ion-item class="custom">
+      <ion-text>{{ "DEVICE_INFORMATION.LANGUAGE_TAG" | translate: { language_tag: langTag } }}</ion-text>
+      <ion-icon slot="end" name="pricetags-sharp"></ion-icon>
+    </ion-item>
+  </ion-card>
+</ion-content>

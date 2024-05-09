@@ -26,6 +26,7 @@
     "paths": {
       "@modules/*": ["./src/app/modules/*"],
       "@plugins/*": ["./src/app/plugins/*"],
+      "@plugins": ["./src/app/plugins/index.ts"],
       "@models/*": ["./src/app/models/*"],
       "@services/*": ["./src/app/services/*"],
       "@services": ["./src/app/services/index.ts*"],

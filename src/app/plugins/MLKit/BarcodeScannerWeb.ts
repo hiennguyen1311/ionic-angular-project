@@ -30,7 +30,7 @@ export class BarcodeScannerWeb
   }
 
   async readBarcodesFromImage(
-    _options: ReadBarcodesFromImageOptions,
+    _options: ReadBarcodesFromImageOptions
   ): Promise<ReadBarcodesFromImageResult> {
     throw this.createUnavailableException();
   }
@@ -102,7 +102,7 @@ export class BarcodeScannerWeb
   private createUnavailableException(): CapacitorException {
     return new CapacitorException(
       'This Barcode Scanner plugin method is not available on this platform.',
-      ExceptionCode.Unavailable,
+      ExceptionCode.Unavailable
     );
   }
 }

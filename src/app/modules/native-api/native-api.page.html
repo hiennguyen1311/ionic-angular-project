@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ "MAIN.NATIVE" | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div>
+    <ion-button *ngFor="let button of buttons" expand="block"  lines="none" button (click)="button.click()">
+      <ion-text>{{button.title}}</ion-text>
+    </ion-button>
+
+    <div class="btn-item ion-padding ion-margin-top">
+      <ion-button expand="block"  lines="none" (click)="showDialog()">
+        <ion-text>{{titles.dialog}}</ion-text>
+      </ion-button>
+     <div class="ion-margin-top">
+      <ion-radio-group  [value]="dialogType">
+        <ion-radio *ngFor="let type of dialogTypes" (click)="handleChangeDialogType(type)" [value]="type" labelPlacement="end" class="ion-margin-end">{{type}}</ion-radio>
+      </ion-radio-group>
+     </div>
+    </div>
+
+    <div class="btn-item ion-padding">
+      <ion-button lines="none" (click)="showToast()" expand="block">
+        <ion-text>{{titles.toast}}</ion-text>
+      </ion-button>
+     <div class="ion-margin-top">
+      <ion-radio-group  [value]="toastDuration">
+        <ion-radio *ngFor="let duration of toastDurations" (click)="handleChangeToastDuration(duration)" [value]="duration" labelPlacement="end" class="ion-margin-end">{{duration}}</ion-radio>
+      </ion-radio-group>
+     </div>
+     <div class="ion-margin-top">
+      <ion-radio-group  [value]="toastPosistion">
+        <ion-radio *ngFor="let position of toastPosistions" (click)="handleChangeToastPosition(position)" [value]="position" labelPlacement="end" class="ion-margin-end">{{position}}</ion-radio>
+      </ion-radio-group>
+     </div>
+     <ion-text color="medium">{{"On android 12 or newer toast will show at the bottom'"}}</ion-text>
+    </div>
+
+    <div class="btn-item ion-padding">
+      <div>
+        <ion-input [placeholder]="titles.clipboard" fill="solid" (ionInput)="onChangeClipboard($event)"></ion-input>
+      </div>
+      <ion-button expand="block" lines="none" (click)="showClipboard()" color="primary">
+        <ion-text>{{"Copy to clipboard"}}</ion-text>
+      </ion-button>
+      <div class="ion-margin-top">
+        <div class="btn-item ion-padding">
+          <ion-text>{{titles.clipboard}}: {{clipboardValue}}</ion-text><br/>
+        </div>
+        <div class="btn-item ion-padding">
+          <ion-text>{{"Type"}}: {{clipboardType}}</ion-text><br/>
+        </div>
+        <ion-button (click)="readClipboard()" expand="block">{{"Read clipboard"}}</ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

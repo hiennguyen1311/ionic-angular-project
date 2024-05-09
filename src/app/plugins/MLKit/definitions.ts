@@ -25,7 +25,7 @@ export interface BarcodeScannerPlugin {
    * @since 0.0.1
    */
   readBarcodesFromImage(
-    options: ReadBarcodesFromImageOptions,
+    options: ReadBarcodesFromImageOptions
   ): Promise<ReadBarcodesFromImageResult>;
   /**
    * Scan a barcode with a ready-to-use interface without WebView customization.
@@ -177,8 +177,8 @@ export interface BarcodeScannerPlugin {
    */
   addListener(
     eventName: 'barcodeScanned',
-    listenerFunc: (event: BarcodeScannedEvent) => void,
-  ): Promise<PluginListenerHandle> & PluginListenerHandle;
+    listenerFunc: (event: BarcodeScannedEvent) => void
+  ): Promise<PluginListenerHandle>;
   /**
    * Called when an error occurs during the scan.
    *
@@ -188,8 +188,8 @@ export interface BarcodeScannerPlugin {
    */
   addListener(
     eventName: 'scanError',
-    listenerFunc: (event: ScanErrorEvent) => void,
-  ): Promise<PluginListenerHandle> & PluginListenerHandle;
+    listenerFunc: (event: ScanErrorEvent) => void
+  ): Promise<PluginListenerHandle>;
   /**
    * Called when the Google Barcode Scanner module is installed.
    *
@@ -200,9 +200,9 @@ export interface BarcodeScannerPlugin {
   addListener(
     eventName: 'googleBarcodeScannerModuleInstallProgress',
     listenerFunc: (
-      event: GoogleBarcodeScannerModuleInstallProgressEvent,
-    ) => void,
-  ): Promise<PluginListenerHandle> & PluginListenerHandle;
+      event: GoogleBarcodeScannerModuleInstallProgressEvent
+    ) => void
+  ): Promise<PluginListenerHandle>;
   /**
    * Remove all listeners for this plugin.
    *
@@ -467,7 +467,7 @@ export interface Barcode {
     [number, number],
     [number, number],
     [number, number],
-    [number, number],
+    [number, number]
   ];
   /**
    * The barcode value in a human readable format.

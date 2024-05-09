@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{"NETWORK.TITLE" | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card class="ion-padding">
+    <ion-item class="custom">
+      <ion-text>{{ "NETWORK.CONNECTED" | translate: { connected: connected } }}</ion-text>
+      <ion-icon slot="end" [name]="connectedIcon"></ion-icon>
+    </ion-item>
+    <ion-item class="custom ion-margin-top">
+      <ion-text>{{ "NETWORK.CONNECTION_TYPE" | translate: { connection_type: connectionType } }}</ion-text>
+      <ion-icon slot="end" [name]="connectionIcon"></ion-icon>
+    </ion-item>
+  </ion-card>
+</ion-content>

@@ -71,6 +71,18 @@ const routes: Routes = [
     path: 'languages',
     loadChildren: () => import('./modules/languages/languages.module').then( m => m.LanguagesPageModule)
   },
+  {
+    path: 'network',
+    loadChildren: () => import('./modules/network/network.module').then( m => m.NetworkPageModule)
+  },
+  {
+    path: 'device-information',
+    loadChildren: () => import('./modules/device-information/device-information.module').then( m => m.DeviceInformationPageModule)
+  },
+  {
+    path: 'native-api',
+    loadChildren: () => import('./modules/native-api/native-api.module').then( m => m.NativeApiPageModule)
+  },
 ];
 
 @NgModule({

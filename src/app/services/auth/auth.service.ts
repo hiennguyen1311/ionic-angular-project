@@ -32,10 +32,14 @@ export class AuthService {
     });
   }
 
-  public async getTokenFromStore() {
+  public async init() {
     await SplashScreen.show();
-    const { value } = await LocalStorage.get({ key: this.authSecretKey });
+    await this.getTokenFromStore();
     await SplashScreen.hide();
+  }
+
+  public async getTokenFromStore() {
+    const { value } = await LocalStorage.get({ key: this.authSecretKey });
     if (!isEmpty(value)) {
       this.store.dispatch(LoginActionSuccess({ data: { token: value } }));
       return true;

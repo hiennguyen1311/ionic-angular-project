@@ -4,7 +4,8 @@
     "OK": "Ok",
     "CANCEL": "Cancel",
     "PROCESSING": "Processing...",
-    "ERROR": "Error"
+    "ERROR": "Error",
+    "COPIED": "Copied"
   },
   "ERROR": {
     "WARNING_SYMBOL": "*",
@@ -58,7 +59,8 @@
     "API_MANAGEMENT": "API Management",
     "GOOGLE_MAP": "Google Map",
     "NETWORK": "Network",
-    "DEVICE_INFORMATION": "Device Information"
+    "DEVICE_INFORMATION": "Device Information",
+    "STORE_MANAGEMENT": "Store management"
   },
   "LANGUAGES": {
     "TITLE": "Languages"
@@ -68,5 +70,19 @@
     "MESSAGE": "Select camera options",
     "OPEN_CAMERA": "Open camera",
     "OPEN_LIBRARY": "Open library"
+  },
+  "NETWORK": {
+    "TITLE": "Network",
+    "CONNECTED": "Connected: {{connected}}",
+    "CONNECTION_TYPE": "Connection type: {{connection_type}}"
+  },
+  "DEVICE_INFORMATION": {
+    "TITLE": "Device information",
+    "BATTERY": "Battery: {{battery}}%",
+    "ID": "ID: {{id}}",
+    "IS_CHARGING": "Is charging: {{is_charging}}",
+    "INFO": "Info: {{info}}",
+    "LANGUAGE": "Language: {{language}}",
+    "LANGUAGE_TAG": "Language tag: {{language_tag}}"
   }
 }
