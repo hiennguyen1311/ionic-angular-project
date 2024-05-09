@@ -5,6 +5,7 @@ import {
   ActionSheet,
   ActionSheetButtonStyle,
 } from '@plugins/ActionSheet/ActionSheetPlugin';
+import { CameraPlugin } from '@plugins/index';
 
 @Component({
   selector: 'app-home-content',
@@ -44,5 +45,9 @@ export class HomeContentPage implements OnInit {
         },
       ],
     });
+  }
+
+  async showCameraAction() {
+    await CameraPlugin.showOptions();
   }
 }

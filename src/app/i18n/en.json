@@ -2,7 +2,7 @@
   "GLOBAL": {
     "MISSING_TRANSLATE": "*Missing Translation*",
     "OK": "Ok",
-    "CANCEL": "CANCEL",
+    "CANCEL": "Cancel",
     "PROCESSING": "Processing...",
     "ERROR": "Error"
   },
@@ -63,5 +63,10 @@
   "LANGUAGES": {
     "TITLE": "Languages"
   },
-  "change": "Change something"
+  "CAMERA": {
+    "TITLE": "Camera options",
+    "MESSAGE": "Select camera options",
+    "OPEN_CAMERA": "Open camera",
+    "OPEN_LIBRARY": "Open library"
+  }
 }

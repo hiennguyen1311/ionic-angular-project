@@ -19,12 +19,14 @@
 
 <ion-content [fullscreen]="true">
   <div id="main-content" class="container">
-    <ion-text>
-      {{titles.content}}
-    </ion-text>
+    <ion-card>
+      <ion-text>
+        {{titles.content}}
+      </ion-text>
+    </ion-card>
   </div>
   <div class="ion-padding">
     <ion-button expand="block" (click)="showActionSheetActions()">{{titles.action_sheet}}</ion-button>
-    <ion-button expand="block">{{titles.show_camera}}</ion-button>
+    <ion-button expand="block" (click)="showCameraAction()">{{titles.show_camera}}</ion-button>
   </div>
 </ion-content>

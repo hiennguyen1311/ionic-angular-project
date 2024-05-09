@@ -11,3 +11,4 @@ export { ScreenOrientation } from '@capacitor/screen-orientation';
 export { Share } from '@capacitor/share';
 export { StatusBar } from '@capacitor/status-bar';
 export { Toast } from '@capacitor/toast';
+export * as CameraPlugin from './Camera/camera';
