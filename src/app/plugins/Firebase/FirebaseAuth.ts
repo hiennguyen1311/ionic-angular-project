@@ -43,6 +43,7 @@ export function signInFirebaseWithEmail(
       .then((result) =>
         resolve({
           token: get(result, 'user.accessToken', '') as string,
+          ...credentials,
         })
       )
       .catch(() => reject(new Error(i18n.t('ERROR.INVALID_LOGIN')).message))

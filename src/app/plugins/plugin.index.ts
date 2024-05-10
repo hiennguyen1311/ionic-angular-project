@@ -13,3 +13,4 @@ export { StatusBar, Style } from '@capacitor/status-bar';
 export { Toast, ShowOptions } from '@capacitor/toast';
 export * as CameraPlugin from './Camera/camera';
 export { SplashScreen } from '@capacitor/splash-screen';
+export * as AngularFireStore from '@angular/fire/firestore';

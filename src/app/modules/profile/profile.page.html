@@ -13,7 +13,27 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="container" id="main-content">
+  <div class="container ion-padding" id="main-content">
+    <div class="content">
+      <div class="avatar-container">
+        <ion-avatar class="image">
+          <ion-img [src]="profile?.image"></ion-img>
+          <div class="icon-container">
+            <div class="icon">
+              <ion-icon name="camera"></ion-icon>
+            </div>
+          </div>
+        </ion-avatar>
+      </div>
+  
+      <div>
+        <ion-text>
+          <h2>{{email}}</h2>
+        </ion-text>
+        <ion-text>{{profile?.name}}</ion-text>
+      </div>
+    </div>
+
     <ion-button color="danger" expand="block" (click)="logout()">
       {{titles.logout}}
     </ion-button>

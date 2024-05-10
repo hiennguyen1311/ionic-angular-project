@@ -30,6 +30,11 @@ import { DEFAULT_LANGUAGE_CODE } from '@constant/constant';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import environment from '@src/environments/environment';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { FireStoreSerivce } from '@services/firebase/firebase.firestore.service';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [AppComponent, TabsComponent],
@@ -58,10 +63,21 @@ import environment from '@src/environments/environment';
         useClass: MyMissingTranslationHandler,
       },
     }),
+    /** Firebase */
     provideFirebaseApp(() =>
-      initializeApp({ apiKey: environment.firebaseKey })
+      initializeApp({
+        apiKey: environment.firebaseKey,
+        projectId: environment.firebaseProjectId,
+      })
     ),
     provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    AngularFireModule.initializeApp({
+      apiKey: environment.firebaseKey,
+      projectId: environment.firebaseProjectId,
+    }),
+    AngularFirestoreModule.enablePersistence(),
+    AngularFireStorageModule,
   ],
   providers: [
     AuthService,
@@ -71,6 +87,7 @@ import environment from '@src/environments/environment';
       useClass: IonicRouteStrategy,
     },
     LanguageService,
+    FireStoreSerivce,
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

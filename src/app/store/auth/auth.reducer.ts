@@ -7,10 +7,12 @@ import {
   LogoutAction,
 } from './auth.actions';
 import LocalStorage from '@plugins/LocalStorage/LocalStorage';
+import { LOCAL_STORAGE } from '@constant/enum';
 
 export const initialState: AuthState = {
   token: '',
   loading: false,
+  email: '',
 };
 
 export const AuthReducer = createReducer(
@@ -22,10 +24,15 @@ export const AuthReducer = createReducer(
     };
   }),
   on(LoginActionSuccess, (state, { data }) => {
-    LocalStorage.set({ key: 'token', value: data.token });
+    LocalStorage.set({ key: LOCAL_STORAGE.TOKEN, value: data.token });
+    LocalStorage.set({
+      key: LOCAL_STORAGE.USER_INFO,
+      value: JSON.stringify(data),
+    });
     return {
       ...state,
       token: data.token,
+      email: data.username,
       loading: false,
     };
   }),
@@ -36,10 +43,7 @@ export const AuthReducer = createReducer(
     };
   }),
   on(LogoutAction, (state, {}) => {
-    LocalStorage.set({ key: 'token', value: '' });
-    return {
-      ...state,
-      token: '',
-    };
+    LocalStorage.set({ key: LOCAL_STORAGE.TOKEN, value: '' });
+    return initialState;
   })
 );

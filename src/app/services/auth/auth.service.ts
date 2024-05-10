@@ -13,10 +13,10 @@ import {
 import { isEmpty } from '@utils/util';
 import { Observable } from 'rxjs';
 import i18n from '@i18n/i18n';
+import { LOCAL_STORAGE } from '@constant/enum';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private authSecretKey = 'token';
   loading = false;
   loading$: Observable<boolean>;
   titles = {
@@ -39,9 +39,9 @@ export class AuthService {
   }
 
   public async getTokenFromStore() {
-    const { value } = await LocalStorage.get({ key: this.authSecretKey });
-    if (!isEmpty(value)) {
-      this.store.dispatch(LoginActionSuccess({ data: { token: value } }));
+    const { value } = await LocalStorage.get({ key: LOCAL_STORAGE.USER_INFO });
+    if (!isEmpty(value) && value !== null) {
+      this.store.dispatch(LoginActionSuccess({ data: JSON.parse(value) }));
       return true;
     }
     this.handleLogout();
