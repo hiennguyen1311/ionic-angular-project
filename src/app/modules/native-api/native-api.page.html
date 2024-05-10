@@ -38,12 +38,12 @@
         <ion-radio *ngFor="let position of toastPosistions" (click)="handleChangeToastPosition(position)" [value]="position" labelPlacement="end" class="ion-margin-end">{{position}}</ion-radio>
       </ion-radio-group>
      </div>
-     <ion-text color="medium">{{"On android 12 or newer toast will show at the bottom'"}}</ion-text>
+     <ion-text color="medium">{{"On android 12 or newer toast will show at the bottom"}}</ion-text>
     </div>
 
     <div class="btn-item ion-padding">
       <div>
-        <ion-input [placeholder]="titles.clipboard" fill="solid" (ionInput)="onChangeClipboard($event)"></ion-input>
+        <ion-input [placeholder]="titles.clipboard" fill="outline" (ionInput)="onChangeClipboard($event)"></ion-input>
       </div>
       <ion-button expand="block" lines="none" (click)="showClipboard()" color="primary">
         <ion-text>{{"Copy to clipboard"}}</ion-text>
@@ -57,6 +57,20 @@
         </div>
         <ion-button (click)="readClipboard()" expand="block">{{"Read clipboard"}}</ion-button>
       </div>
+    </div>
+
+    <div class="btn-item ion-padding">
+      <ion-input [placeholder]="titles.share" fill="outline" (ionInput)="onChangeShare($event)"></ion-input>
+      <ion-button expand="block" lines="none" (click)="onShare()" color="primary">
+        <ion-text>{{"Share"}}</ion-text>
+      </ion-button>
+    </div>
+
+    <div class="btn-item ion-padding">
+      <ion-text>{{"Status bar"}}</ion-text>
+      <ion-button *ngFor="let action of statusBarActions" expand="block" lines="none" (click)="action.click()" color="primary">
+        <ion-text>{{action.title}}</ion-text>
+      </ion-button>
     </div>
   </div>
 </ion-content>

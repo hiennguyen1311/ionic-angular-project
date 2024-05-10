@@ -4,7 +4,16 @@ import {
   ActionSheet,
   ActionSheetButtonStyle,
 } from '@plugins/ActionSheet/ActionSheetPlugin';
-import { CameraPlugin, Toast, ShowOptions, Clipboard } from '@plugins/index';
+import {
+  CameraPlugin,
+  Toast,
+  ShowOptions,
+  Clipboard,
+  Share,
+  StatusBar,
+  Style,
+  SplashScreen,
+} from '@plugins';
 import i18n from '@i18n/i18n';
 
 @Component({
@@ -17,6 +26,7 @@ export class NativeApiPage implements OnInit {
     { title: 'Show Action Sheet', click: this.showActionSheetActions },
     { title: 'Show Camera', click: this.showCameraAction },
     { title: 'Show Browser', click: this.showActionSheetActions },
+    { title: 'Show Spalsh screen', click: this.showSplashScreen },
   ];
   dialogType = 'alert';
   dialogTypes = ['alert', 'prompt', 'confirm'];
@@ -28,10 +38,30 @@ export class NativeApiPage implements OnInit {
     dialog: 'Show Dialog',
     toast: 'Show Toast',
     clipboard: 'Clipboard',
+    share: 'Share text',
   };
   clipboard = '';
   clipboardValue = '';
   clipboardType = '';
+  shareTitle = '';
+  statusBarActions = [
+    {
+      title: 'Style dark',
+      click: async () => await StatusBar.setStyle({ style: Style.Dark }),
+    },
+    {
+      title: 'Style light',
+      click: async () => await StatusBar.setStyle({ style: Style.Light }),
+    },
+    {
+      title: 'Hide',
+      click: async () => await StatusBar.hide(),
+    },
+    {
+      title: 'Show',
+      click: async () => await StatusBar.show(),
+    },
+  ];
 
   constructor() {}
 
@@ -106,12 +136,14 @@ export class NativeApiPage implements OnInit {
   }
 
   async showToast(
-    text = 'Toast' + ' ' + this.toastDuration + ' ' + this.toastPosistion
+    text = 'Toast' + ' ' + this.toastDuration + ' ' + this.toastPosistion,
+    position = this.toastPosistion,
+    duration = this.toastDuration
   ) {
     await Toast.show({
       text,
-      position: this.toastPosistion,
-      duration: this.toastDuration,
+      position,
+      duration,
     });
   }
 
@@ -124,9 +156,30 @@ export class NativeApiPage implements OnInit {
     this.clipboard = data.target!.value;
   }
 
+  onChangeShare(data: any) {
+    this.shareTitle = data.target!.value;
+  }
+
   async readClipboard() {
     const { value, type } = await Clipboard.read();
     this.clipboardValue = value;
     this.clipboardType = type;
+  }
+
+  async onShare() {
+    await Share.share({
+      dialogTitle: 'Share',
+      title: 'Share title',
+      text: this.shareTitle,
+    });
+  }
+
+  async showSplashScreen() {
+    await SplashScreen.show({
+      autoHide: true,
+      showDuration: 1000,
+      fadeInDuration: 100,
+      fadeOutDuration: 100,
+    });
   }
 }

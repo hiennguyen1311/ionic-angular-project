@@ -9,6 +9,7 @@ export { LocalNotifications } from '@capacitor/local-notifications';
 export { PushNotifications } from '@capacitor/push-notifications';
 export { ScreenOrientation } from '@capacitor/screen-orientation';
 export { Share } from '@capacitor/share';
-export { StatusBar } from '@capacitor/status-bar';
+export { StatusBar, Style } from '@capacitor/status-bar';
 export { Toast, ShowOptions } from '@capacitor/toast';
 export * as CameraPlugin from './Camera/camera';
+export { SplashScreen } from '@capacitor/splash-screen';
