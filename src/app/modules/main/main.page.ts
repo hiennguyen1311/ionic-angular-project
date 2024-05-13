@@ -16,6 +16,7 @@ export class MainPage implements OnInit {
     { title: 'HOME.TITLE', page: '/home' },
     { title: 'MAIN.MENU', page: '/menu' },
     { title: 'MAIN.TABS', page: '/tabs' },
+    { title: 'MAIN.UI', page: '/ui-component' },
     { title: 'LANGUAGES.TITLE', page: '/languages' },
     { title: 'MAIN.NATIVE', page: '/native-api' },
     { title: 'MAIN.API_MANAGEMENT', page: '/tabs' },

@@ -1,0 +1,52 @@
+.ion-border {
+  border-radius: 16px;
+  border-width: thin;
+  border-color: darkgray;
+  border-style: solid;
+}
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+
+  margin: 0 auto;
+  margin-top: 16px;
+}
+
+b {
+  width: 100%;
+}
+
+.ripple-parent {
+  position: relative;
+  overflow: hidden;
+
+  border: 2px solid #ddd;
+}
+
+.rectangle {
+  width: 300px;
+  height: 150px;
+}
+
+.rounded-rectangle {
+  width: 185px;
+  height: 65px;
+  border-radius: 8px;
+}
+
+.circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+
+ion-col {
+  background-color: #135d54;
+  border: solid 1px #fff;
+  color: #fff;
+  text-align: center;
+}

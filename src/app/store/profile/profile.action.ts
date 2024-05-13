@@ -1,23 +1,7 @@
 import ActionsName from '@constant/actionName';
-import {
-  ActionFailureResponse,
-  ActionSuccessResponse,
-} from '@models/store.interface';
 
-import { createAction, props } from '@ngrx/store';
-import { actionNameFailure, actionNameSuccess } from '@store/store';
+import { completeAction } from '@store/store.action';
 
-export const UpdateProfileAction = createAction(
-  ActionsName.UPDATE_PROFILE,
-  props<{ payload: any }>()
-);
+export const UpdateProfileAction = completeAction(ActionsName.UPDATE_PROFILE);
 
-export const UpdateProfileActionSuccess = createAction(
-  actionNameSuccess(ActionsName.UPDATE_PROFILE),
-  props<ActionSuccessResponse>()
-);
-
-export const UpdateProfileActionFailure = createAction(
-  actionNameFailure(ActionsName.UPDATE_PROFILE),
-  props<ActionFailureResponse>()
-);
+export const FetchProfileAction = completeAction(ActionsName.FETCH_PROFILE);

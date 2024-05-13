@@ -1,0 +1,503 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'MAIN.UI' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Pull to Refresh</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-item-divider>
+    <ion-label>Alert</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-button id="present-alert" expand="block">{{"Show alert"}}</ion-button>
+    <ion-alert
+      trigger="present-alert"
+      header="A Short Title Is Best"
+      sub-header="A Sub Header Is Optional"
+      message="A message should be a short, complete sentence."
+    ></ion-alert>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>Action sheet</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-button id="open-action-sheet" expand="block">{{'Open action sheet'}}</ion-button>
+    <ion-action-sheet trigger="open-action-sheet" header="Actions" [buttons]="actionSheetButtons"></ion-action-sheet>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>Accordion</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-accordion-group>
+      <ion-accordion value="first">
+        <ion-item slot="header" color="light">
+          <ion-label>First Accordion</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">First Content</div>
+      </ion-accordion>
+      <ion-accordion value="second">
+        <ion-item slot="header" color="light">
+          <ion-label>Second Accordion</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">Second Content</div>
+      </ion-accordion>
+      <ion-accordion value="third">
+        <ion-item slot="header" color="light">
+          <ion-label>Third Accordion</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">Third Content</div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>Breadcrumbs</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-breadcrumbs>
+      <ion-breadcrumb href="#home">Home</ion-breadcrumb>
+      <ion-breadcrumb href="#scan">Scan</ion-breadcrumb>
+      <ion-breadcrumb href="#text-recongition">Text Recognition</ion-breadcrumb>
+      <ion-breadcrumb href="#Profile">Profile</ion-breadcrumb>
+    </ion-breadcrumbs>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>Ripple Effect</ion-label>
+  </ion-item-divider>
+  <div class="wrapper ion-padding">
+    <b>Click on a shape to see the ripple</b>
+    <div class="ion-activatable ripple-parent rectangle">
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+    <div class="ion-activatable ripple-parent rounded-rectangle">
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+    <div class="ion-activatable ripple-parent circle">
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>CHIP</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-chip>Default</ion-chip>
+    <ion-chip [disabled]="true">Disabled</ion-chip>
+    <ion-chip [outline]="true">Outline</ion-chip>
+    <ion-chip>
+      <ion-avatar>
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+      <ion-label>Avatar Chip</ion-label>
+      <ion-icon name="close-circle"></ion-icon>
+    </ion-chip>
+    <ion-chip>
+      <ion-icon name="pin" color="primary"></ion-icon>
+      <ion-label>Icon Chip</ion-label>
+      <ion-icon name="close"></ion-icon>
+    </ion-chip>
+    <ion-chip color="primary">Primary</ion-chip>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>DATE</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-datetime></ion-datetime>
+    <ion-datetime-button datetime="datetime"></ion-datetime-button>
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime id="datetime"></ion-datetime>
+      </ng-template>
+    </ion-modal>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>PICKER</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-picker>
+      <ion-picker-column value="javascript">
+        <ion-picker-column-option value="" disabled="true">--</ion-picker-column-option>
+        <ion-picker-column-option value="javascript">Javascript</ion-picker-column-option>
+        <ion-picker-column-option value="typescript">Typescript</ion-picker-column-option>
+        <ion-picker-column-option value="rust">Rust</ion-picker-column-option>
+        <ion-picker-column-option value="c#">C#</ion-picker-column-option>
+      </ion-picker-column>
+    </ion-picker>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>FAB</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-content fixed-slot-placement="before">
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button>
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list>
+          <ion-fab-button>
+            <ion-icon name="document"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button>
+            <ion-icon name="color-palette"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button>
+            <ion-icon name="globe"></ion-icon>
+          </ion-fab-button>
+        </ion-fab-list>
+      </ion-fab>
+    </ion-content>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>Grid</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-grid>
+      <ion-row>
+        <ion-col>1</ion-col>
+        <ion-col>2</ion-col>
+        <ion-col>3</ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col>1</ion-col>
+        <ion-col>2</ion-col>
+        <ion-col>3</ion-col>
+        <ion-col>4</ion-col>
+        <ion-col>5</ion-col>
+        <ion-col>6</ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col>1</ion-col>
+        <ion-col>2</ion-col>
+        <ion-col>3</ion-col>
+        <ion-col>4</ion-col>
+        <ion-col>5</ion-col>
+        <ion-col>6</ion-col>
+        <ion-col>7</ion-col>
+        <ion-col>8</ion-col>
+        <ion-col>9</ion-col>
+        <ion-col>10</ion-col>
+        <ion-col>11</ion-col>
+        <ion-col>12</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>Item Sliding</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-list>
+      <ion-item-sliding>
+        <ion-item>
+          <ion-label>Sliding Item with Start/End Options</ion-label>
+        </ion-item>
+        <ion-item-options side="start">
+          <ion-item-option>Favorite</ion-item-option>
+          <ion-item-option color="danger">Delete</ion-item-option>
+        </ion-item-options>
+        <ion-item-options side="end">
+          <ion-item-option>
+            <ion-icon slot="start" name="heart"></ion-icon>
+            Favorite
+          </ion-item-option>
+          <ion-item-option color="danger">
+            <ion-icon slot="start" name="trash"></ion-icon>
+            Delete
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>Item Group</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label>A</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-label>Angola</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Argentina</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Armenia</ion-label>
+      </ion-item>
+    </ion-item-group>
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label>B</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-label>Bangladesh</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Belarus</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Belgium</ion-label>
+      </ion-item>
+    </ion-item-group>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>Item Note</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-note>Default Note</ion-note>
+    <ion-item>
+      <ion-label>Label</ion-label>
+      <ion-note slot="end">Note (End)</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-note slot="start">Note (Start)</ion-note>
+      <ion-label>Label</ion-label>
+    </ion-item>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>Popover</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-button expand="block" id="click-trigger">Left-Click Me</ion-button>
+    <ion-popover trigger="click-trigger" triggerAction="click">
+      <ng-template>
+        <ion-content class="ion-padding">Hello World!</ion-content>
+      </ng-template>
+    </ion-popover>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>Progress Indicators</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-button id="open-loading" expand="block">Show Loading</ion-button>
+    <ion-loading trigger="open-loading" message="Dismissing after 3 seconds..." duration="3000"></ion-loading>
+    <ion-progress-bar [value]="progress"></ion-progress-bar>
+    <ion-list *ngIf="loaded">
+      <ion-list-header>Albums</ion-list-header>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-icon style="width: 100%; height: 100%" name="musical-notes"></ion-icon>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>Abbey Road</h3>
+          <p>The Beatles</p>
+          <p>1969</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-list *ngIf="!loaded">
+      <ion-list-header>
+        <ion-skeleton-text [animated]="true" style="width: 80px"></ion-skeleton-text>
+      </ion-list-header>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-button (click)="loaded = !loaded" expand="block">Toggle Lazy Text</ion-button>
+    <ion-item>
+      <ion-label>Spinner Default</ion-label>
+      <ion-spinner></ion-spinner>
+    </ion-item>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>Popover</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-range labelPlacement="start" label="Label at the Start"></ion-range>
+    <br />
+    <ion-range labelPlacement="end" label="Label at the End"></ion-range>
+    <br />
+    <ion-range labelPlacement="fixed" label="Fixed Width Label"></ion-range>
+    <br />
+    <ion-range labelPlacement="stacked" label="Stacked Label"></ion-range>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>Reorder</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-list>
+      <!-- Casting $event to $any is a temporary fix for this bug https://github.com/ionic-team/ionic-framework/issues/24245 -->
+      <ion-reorder-group [disabled]="isDisabled" (ionItemReorder)="handleReorder($any($event))">
+        <ion-item>
+          <ion-label> Item 1 </ion-label>
+          <ion-reorder slot="end"></ion-reorder>
+        </ion-item>
+        <ion-item>
+          <ion-label> Item 2 </ion-label>
+          <ion-reorder slot="end"></ion-reorder>
+        </ion-item>
+        <ion-item>
+          <ion-label> Item 3 </ion-label>
+          <ion-reorder slot="end"></ion-reorder>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label> Item 4 </ion-label>
+          <ion-reorder slot="end"></ion-reorder>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label> Item 5 </ion-label>
+          <ion-reorder slot="end"></ion-reorder>
+        </ion-item>
+      </ion-reorder-group>
+    </ion-list>
+    <!-- The reorder gesture is disabled by default, enable it to drag and drop items -->
+    <ion-button (click)="toggleReorder()" expand="block"> Toggle Reorder </ion-button>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>Search bar</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-searchbar></ion-searchbar>
+    <ion-searchbar placeholder="Custom Placeholder"></ion-searchbar>
+    <ion-searchbar disabled="true" placeholder="Disabled"></ion-searchbar>
+    <ion-searchbar value="Value"></ion-searchbar>
+    <ion-searchbar animated="true" placeholder="Animated"></ion-searchbar>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>Segment</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-segment value="default">
+      <ion-segment-button value="default">
+        <ion-label>Default</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="segment">
+        <ion-label>Segment</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <ion-segment [disabled]="true" value="disabled">
+      <ion-segment-button value="disabled">
+        <ion-label>Disabled</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="segment">
+        <ion-label>Segment</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <ion-segment [scrollable]="true" value="heart">
+      <ion-segment-button value="home">
+        <ion-icon name="home"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="heart">
+        <ion-icon name="heart"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="pin">
+        <ion-icon name="pin"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="star">
+        <ion-icon name="star"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="call">
+        <ion-icon name="call"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="globe">
+        <ion-icon name="globe"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="basket">
+        <ion-icon name="basket"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="barbell">
+        <ion-icon name="barbell"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="trash">
+        <ion-icon name="trash"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="person">
+        <ion-icon name="person"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>Segment</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-list>
+      <ion-item>
+        <ion-select label="Default label" placeholder="Favorite Fruit">
+          <ion-select-option value="apple">Apple</ion-select-option>
+          <ion-select-option value="banana">Banana</ion-select-option>
+          <ion-select-option value="orange">Orange</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-select label="Fixed label" label-placement="fixed" placeholder="Favorite fruit">
+          <ion-select-option value="apple">Apple</ion-select-option>
+          <ion-select-option value="banana">Banana</ion-select-option>
+          <ion-select-option value="orange">Orange</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-select label="Stacked label" label-placement="stacked">
+          <ion-select-option value="apple">Apple</ion-select-option>
+          <ion-select-option value="banana">Banana</ion-select-option>
+          <ion-select-option value="orange">Orange</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-select label="Floating label" label-placement="floating">
+          <ion-select-option value="apple">Apple</ion-select-option>
+          <ion-select-option value="banana">Banana</ion-select-option>
+          <ion-select-option value="orange">Orange</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <ion-item-divider >
+    <ion-label>Toggle</ion-label>
+  </ion-item-divider>
+  <div class="ion-padding">
+    <ion-toggle>Default Toggle</ion-toggle><br /><br />
+    <ion-toggle [checked]="true">Checked Toggle</ion-toggle><br /><br />
+    <ion-toggle [disabled]="true">Disabled Toggle</ion-toggle><br /><br />
+    <ion-toggle [checked]="true" [disabled]="true">Disabled Checked Toggle</ion-toggle>
+  </div>
+</ion-content>

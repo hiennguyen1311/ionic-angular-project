@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { ProfileState } from '@models/store.interface';
-import { UpdateProfileActionSuccess } from './profile.action';
+import { FetchProfileAction } from './profile.action';
 
 export const initialState: ProfileState = {
   data: {},
@@ -8,7 +8,7 @@ export const initialState: ProfileState = {
 
 export const ProfileReducer = createReducer(
   initialState,
-  on(UpdateProfileActionSuccess, (state, { data }) => {
+  on(FetchProfileAction.success, (state, { data }) => {
     return {
       ...state,
       data,

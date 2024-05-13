@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { switchMap } from 'rxjs';
-import { UpdateProfileAction } from './profile.action';
+import { FetchProfileAction } from './profile.action';
 import { actionNameSuccess, actionSuccess } from '@store/store';
 
 @Injectable()
@@ -10,7 +10,7 @@ export class ProfileEffects {
 
   UpdateProfile$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(UpdateProfileAction),
+      ofType(FetchProfileAction.request),
       switchMap(async (action) => {
         return {
           type: actionNameSuccess(action.type),

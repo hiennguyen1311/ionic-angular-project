@@ -12,30 +12,60 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-backdrop *ngIf="editting.length"></ion-backdrop>
+
 <ion-content [fullscreen]="true">
-  <div class="container ion-padding" id="main-content">
+  <div class="container" id="main-content">
     <div class="content">
-      <div class="avatar-container">
-        <ion-avatar class="image">
-          <ion-img [src]="profile?.image"></ion-img>
-          <div class="icon-container">
-            <div class="icon">
-              <ion-icon name="camera"></ion-icon>
-            </div>
+      <div class="avatar-container ion-padding">
+        <div class="avatar-wrapper">
+          <ion-avatar class="image">
+            <ion-img [src]="profile.profile?.image"></ion-img>
+          </ion-avatar>
+        </div>
+        <div class="icon-container">
+          <div class="icon">
+            <ion-icon name="camera"></ion-icon>
           </div>
-        </ion-avatar>
+        </div>
       </div>
   
       <div>
-        <ion-text>
-          <h2>{{email}}</h2>
-        </ion-text>
-        <ion-text>{{profile?.name}}</ion-text>
+        <ion-item>
+          <ion-text>
+            <h2>{{profile.email}}</h2>
+          </ion-text>
+        </ion-item>
+        <ion-list>
+          <ion-item *ngFor="let item of profile.profiles" button (click)="showEditField(item.key)">
+            <ion-text>{{item.value}}</ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-input type="date" [value]="profile.profile.dob" (ionChange)="updateFieldDob($event)"></ion-input>
+          </ion-item>
+        </ion-list>
       </div>
+
+      <ion-modal [isOpen]="editting.length" class="modal-wrapper">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar class="ion-padding-end ion-padding-start">
+              <ion-text>{{editting.toUpperCase()}}</ion-text>
+              <ion-icon slot ='end' name="close" (click)="showEditField('')"></ion-icon>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <ion-input [value]="edittingValue" (ionInput)="onChangeField($event)" fill="outline"></ion-input>
+            <ion-button class="ion-margin-top" (click)="updateField()" expand="block">{{ 'GLOBAL.SAVE' | translate }}</ion-button>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
     </div>
 
-    <ion-button color="danger" expand="block" (click)="logout()">
-      {{titles.logout}}
-    </ion-button>
+    <div class="ion-padding">
+      <ion-button color="danger" expand="block" (click)="logout()">
+        {{titles.logout}}
+      </ion-button>
+    </div>
   </div>
 </ion-content>

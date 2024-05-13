@@ -1,23 +1,13 @@
 import { get } from '@utils/util';
-import {
-  doc,
-  Firestore,
-  collection,
-  CollectionReference,
-} from '@angular/fire/firestore';
-import { Injectable, inject } from '@angular/core';
-import { AngularFireStore } from '@plugins';
+import { Injectable } from '@angular/core';
 import { Observable, Subject, catchError, switchMap } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Store } from '@ngrx/store';
-import { ApplicationState } from '@models/store.interface';
-import { UpdateProfileAction } from '@store/profile/profile.action';
+import { documentId } from '@angular/fire/firestore';
 
 @Injectable({ providedIn: 'root' })
 export class FireStoreSerivce {
   private dbPath = 'user';
   private idField = 'id';
-  private id = 'hien.phucnguyen@hitachids.com';
   private profile$ = new Subject<any>();
   public profile: any = {};
   public queryObservable$: Observable<any>;
@@ -25,35 +15,37 @@ export class FireStoreSerivce {
     image: '',
     name: '',
     email: '',
+    dob: '',
   };
 
-  constructor(
-    private afs: AngularFirestore,
-    private store: Store<ApplicationState>
-  ) {
+  constructor(private afs: AngularFirestore) {
     this.queryObservable$ = this.profile$.pipe(
       switchMap((data) =>
         this.afs
-          .collection(this.dbPath, (ref) => ref.where(this.idField, '==', data))
+          .collection(this.dbPath, (ref) => ref.where(documentId(), '==', data))
           .valueChanges()
       ),
       catchError((error) => {
         return error;
       })
     );
+  }
+
+  fetchProfile(id: string, cb = (_data: any) => {}) {
     this.queryObservable$.subscribe((queriedItems) => {
       this.profile = queriedItems[0] || this.profile;
       this.parseData = {
         image: get(this.profile, 'image', ''),
         name: get(this.profile, 'name', ''),
         email: get(this.profile, 'email', ''),
+        dob: get(this.profile, 'dob', ''),
       };
-      this.updateProfile(this.parseData);
+      cb(this.parseData);
     });
-    this.profile$.next(this.id);
+    this.profile$.next(id);
   }
 
-  updateProfile(profile: any) {
-    this.store.dispatch(UpdateProfileAction({ payload: profile }));
+  async updateProfile(id: string, values: any) {
+    await this.afs.collection(this.dbPath).doc(id).set(values, { merge: true });
   }
 }

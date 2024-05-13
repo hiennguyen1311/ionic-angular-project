@@ -1,10 +1,8 @@
+import { get } from '@utils/util';
 import { Component, OnInit } from '@angular/core';
 import i18n from '@i18n/i18n';
-import { ApplicationState } from '@models/store.interface';
-import { Store, select } from '@ngrx/store';
 import { AuthService } from '@services/auth/auth.service';
-import { FireStoreSerivce } from '@services/firebase/firebase.firestore.service';
-import { Observable } from 'rxjs';
+import { ProfileSerivce } from '@services/profile/profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,35 +10,47 @@ import { Observable } from 'rxjs';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  titles = {
+  public titles = {
     logout: i18n.t('HOME.LOGOUT'),
     logout_confirm: i18n.t('PROFILE.LOGOUT_CONFIRM'),
     cancel: i18n.t('GLOBAL.CANCEL'),
   };
-  email$: Observable<string>;
-  email: string = '';
-  profile$: Observable<string>;
-  profile: any = {};
+  public editting = '';
+  public edittingValue = '';
 
   constructor(
     private authService: AuthService,
-    private store: Store<ApplicationState>,
-    public fireService: FireStoreSerivce
-  ) {
-    this.email$ = this.store.pipe(select('auth', 'email'));
-    this.profile$ = this.store.pipe(select('profile', 'data'));
-  }
+    public profile: ProfileSerivce
+  ) {}
 
   ngOnInit() {
-    this.email$.subscribe((value) => {
-      this.email = value;
-    });
-    this.profile$.subscribe((value) => {
-      this.profile = value;
-    });
+    this.profile.init();
   }
 
   async logout() {
     await this.authService.logout();
+  }
+
+  async updateProfile() {
+    await this.profile.updateProfile({});
+  }
+
+  showEditField(field: string) {
+    this.editting = field;
+    this.edittingValue = get(this.profile.profile, field, '');
+  }
+
+  updateField() {
+    this.profile.updateProfile({ [this.editting]: this.edittingValue });
+    this.showEditField('');
+  }
+
+  updateFieldDob(ev: any) {
+    this.profile.updateProfile({ dob: ev?.target.value });
+    this.showEditField('');
+  }
+
+  onChangeField(ev: any) {
+    this.edittingValue = ev.target.value;
   }
 }

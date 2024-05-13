@@ -5,7 +5,8 @@
     "CANCEL": "Cancel",
     "PROCESSING": "Processing...",
     "ERROR": "Error",
-    "COPIED": "Copied"
+    "COPIED": "Copied",
+    "SAVE": "Save"
   },
   "ERROR": {
     "WARNING_SYMBOL": "*",
@@ -60,7 +61,8 @@
     "GOOGLE_MAP": "Google Map",
     "NETWORK": "Network",
     "DEVICE_INFORMATION": "Device Information",
-    "STORE_MANAGEMENT": "Store management"
+    "STORE_MANAGEMENT": "Store management",
+    "UI": "Component UI"
   },
   "LANGUAGES": {
     "TITLE": "Languages"

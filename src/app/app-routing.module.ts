@@ -83,6 +83,10 @@ const routes: Routes = [
     path: 'native-api',
     loadChildren: () => import('./modules/native-api/native-api.module').then( m => m.NativeApiPageModule)
   },
+  {
+    path: 'ui-component',
+    loadChildren: () => import('./modules/ui-component/ui-component.module').then( m => m.UiComponentPageModule)
+  },
 ];
 
 @NgModule({
