@@ -28,10 +28,14 @@
   border-style: solid;
 }
 .icon-container {
-  display: flex;
+  display: flex; 
+  align-items: flex-end;
+  justify-content: flex-end;
+  align-content: flex-end;
   position: absolute;
-  top: 16px;
+  top: 10%;
   right: 16px;
+  z-index: 100;
 }
 .icon {
   background-color: white;

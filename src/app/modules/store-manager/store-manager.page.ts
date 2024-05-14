@@ -26,8 +26,6 @@ export class StoreManagerPage implements OnInit {
   }
 
   inscreaseCode() {
-    this.store.dispatch(
-      UpdateAppAction.request({ payload: { code: this.code++ } })
-    );
+    this.store.dispatch(UpdateAppAction.request({ payload: { code: 1 } }));
   }
 }

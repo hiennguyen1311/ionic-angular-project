@@ -15,6 +15,7 @@ export const AppReducer = createReducer(
     return {
       ...state,
       ...payload,
+      code: payload.code ? state.code + payload.code : state.code,
     };
   }),
   on(FetchDataAppAction.request, (state) => {
