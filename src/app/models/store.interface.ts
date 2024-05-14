@@ -1,4 +1,5 @@
 export interface ApplicationState {
+  app: AppState;
   auth: AuthState;
   language: LanguageState;
   profile: ProfileState;
@@ -8,6 +9,13 @@ export interface AuthState {
   token: string;
   loading: boolean;
   email: string;
+}
+
+export interface AppState {
+  readonly version: string;
+  readonly code: number;
+  readonly loading: boolean;
+  readonly data: any;
 }
 
 export interface LanguageState {

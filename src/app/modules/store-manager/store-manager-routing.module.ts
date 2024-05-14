@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { NativeApiPage } from './native-api.page';
+import { StoreManagerPage } from './store-manager.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: NativeApiPage,
-  },
+    component: StoreManagerPage
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class NativeApiPageRoutingModule {}
+export class StoreManagerPageRoutingModule {}

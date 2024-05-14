@@ -5,10 +5,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content>
   <div class="container">
-    <ion-list>
-      <ion-button class="button-item" *ngFor="let button of buttons" expand="block" (click)="goToPage(button.page)">{{button.title | translate}}</ion-button>
-    </ion-list>
+    <div class="ion-padding">
+      <ion-list>
+        <ion-button class="button-item" *ngFor="let button of buttons" expand="block" (click)="goToPage(button.page)">{{button.title | translate}}</ion-button>
+      </ion-list>
+    </div>
   </div>
 </ion-content>

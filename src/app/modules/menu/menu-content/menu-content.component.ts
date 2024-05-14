@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import i18n from '@i18n/i18n';
-import { NavController } from '@ionic/angular';
 import { AuthService } from '@services/auth/auth.service';
 
 @Component({
@@ -41,11 +40,7 @@ export class MenuContentComponent implements OnInit {
     title: i18n.t('HOME.MENU'),
   };
   version = 'Version 1.0';
-  constructor(
-    private router: Router,
-    public navCtrl: NavController,
-    public authService: AuthService
-  ) {
+  constructor(private router: Router, public authService: AuthService) {
     this.currentRoute = this.router.url;
     this.router.events.subscribe((val: any) => {
       if (val?.urlAfterRedirects) {

@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Notification</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card class="ion-padding">
+    <ion-item>
+      <ion-text>Permission: {{notification.permission}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-text>Permission exact: {{notification.permission_exact}}</ion-text>
+    </ion-item>
+  </ion-card>
+  <ion-button [disabled]="notification.permission" expand="block" (click)="notification.permissionHandle()">{{'NOTIFICATION.PERMISSON' | translate}}</ion-button>
+  <ion-button [disabled]="notification.permission_exact" expand="block" (click)="notification.exactNotificationSettingHandle()">{{'NOTIFICATION.PERMISSON_EXACT' | translate}}</ion-button>
+  <ion-button expand="block" (click)="notification.schedule()">{{'NOTIFICATION.PUSH_LOCAL' | translate}}</ion-button>
+</ion-content>

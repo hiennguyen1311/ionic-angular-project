@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Store Manager</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card class="ion-padding">
+    <ion-item>
+      <ion-text>Version: {{version}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-text>Code: {{code}}</ion-text>
+    </ion-item>
+  </ion-card>
+  
+  <ion-content class="ion-padding">
+    <ion-button expand="block" (click)="inscreaseCode()">Inscrease code</ion-button>
+  </ion-content>
+</ion-content>

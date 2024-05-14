@@ -15,6 +15,7 @@ import {
   SplashScreen,
 } from '@plugins';
 import i18n from '@i18n/i18n';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-native-api',
@@ -26,7 +27,8 @@ export class NativeApiPage implements OnInit {
     { title: 'Show Action Sheet', click: this.showActionSheetActions },
     { title: 'Show Camera', click: this.showCameraAction },
     { title: 'Show Browser', click: this.showActionSheetActions },
-    { title: 'Show Spalsh screen', click: this.showSplashScreen },
+    { title: 'Show Splash screen', click: this.showSplashScreen },
+    { title: 'Keyboard', click: () => this.router.navigate(['/keyboard']) },
   ];
   dialogType = 'alert';
   dialogTypes = ['alert', 'prompt', 'confirm'];
@@ -63,7 +65,7 @@ export class NativeApiPage implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
 

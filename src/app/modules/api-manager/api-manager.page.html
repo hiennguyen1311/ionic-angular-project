@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Api Manager</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-card class="ion-padding">
+    <ion-item>
+      <ion-text>Data: {{data}}</ion-text>
+    </ion-item>
+  </ion-card>
+  <ion-item class="ion-margin-top ion-margin-bottom">
+    <ion-checkbox labelPlacement="end" [checked]="isShowError" (ionChange)="checkShowError()" justify="start">Show Error</ion-checkbox>
+  </ion-item>  
+  <ion-button expand="block" (click)="fetchData()">Fetch Data</ion-button>
+  <ion-loading [isOpen]="loading"></ion-loading>
+</ion-content>

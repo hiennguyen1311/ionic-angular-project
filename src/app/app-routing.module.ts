@@ -69,23 +69,57 @@ const routes: Routes = [
   },
   {
     path: 'languages',
-    loadChildren: () => import('./modules/languages/languages.module').then( m => m.LanguagesPageModule)
+    loadChildren: () =>
+      import('./modules/languages/languages.module').then(
+        (m) => m.LanguagesPageModule
+      ),
   },
   {
     path: 'network',
-    loadChildren: () => import('./modules/network/network.module').then( m => m.NetworkPageModule)
+    loadChildren: () =>
+      import('./modules/network/network.module').then(
+        (m) => m.NetworkPageModule
+      ),
   },
   {
     path: 'device-information',
-    loadChildren: () => import('./modules/device-information/device-information.module').then( m => m.DeviceInformationPageModule)
+    loadChildren: () =>
+      import('./modules/device-information/device-information.module').then(
+        (m) => m.DeviceInformationPageModule
+      ),
   },
   {
     path: 'native-api',
-    loadChildren: () => import('./modules/native-api/native-api.module').then( m => m.NativeApiPageModule)
+    loadChildren: () =>
+      import('./modules/native-api/native-api.module').then(
+        (m) => m.NativeApiPageModule
+      ),
   },
   {
     path: 'ui-component',
-    loadChildren: () => import('./modules/ui-component/ui-component.module').then( m => m.UiComponentPageModule)
+    loadChildren: () =>
+      import('./modules/ui-component/ui-component.module').then(
+        (m) => m.UiComponentPageModule
+      ),
+  },
+  {
+    path: 'keyboard',
+    loadChildren: () =>
+      import('./modules/native-api//keyboard/keyboard.module').then(
+        (m) => m.KeyboardPageModule
+      ),
+  },
+  {
+    path: 'notification',
+    loadChildren: () => import('./modules/notification/notification.module').then( m => m.NotificationPageModule)
+  },
+  {
+    path: 'store-manager',
+    loadChildren: () => import('./modules/store-manager/store-manager.module').then( m => m.StoreManagerPageModule)
+  },
+  {
+    path: 'api-manager',
+    loadChildren: () => import('./modules/api-manager/api-manager.module').then( m => m.ApiManagerPageModule)
   },
 ];
 

@@ -62,7 +62,8 @@
     "NETWORK": "Network",
     "DEVICE_INFORMATION": "Device Information",
     "STORE_MANAGEMENT": "Store management",
-    "UI": "Component UI"
+    "UI": "Components",
+    "NOTIFICATION": "Notification"
   },
   "LANGUAGES": {
     "TITLE": "Languages"
@@ -86,5 +87,10 @@
     "INFO": "Info: {{info}}",
     "LANGUAGE": "Language: {{language}}",
     "LANGUAGE_TAG": "Language tag: {{language_tag}}"
+  },
+  "NOTIFICATION": {
+    "PUSH_LOCAL": "Push local notification",
+    "PERMISSON": "Check Permission",
+    "PERMISSON_EXACT": "Check Permission exact notification"
   }
 }

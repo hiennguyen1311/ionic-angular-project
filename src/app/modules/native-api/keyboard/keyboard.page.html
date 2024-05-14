@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Keyboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-input placeholder="Type something..." fill="outline"></ion-input>
+  <ion-card  class="ion-padding">
+    <ion-text>Status: {{status}}</ion-text><br/>
+    <ion-text>Keyboard height: {{keyboardHeight}}</ion-text><br/>
+    <ion-text>Visible Acessory: {{visibleAcessory}}</ion-text><br/>
+    <ion-text>Scroll: {{scroll}}</ion-text><br/>
+    <ion-text>Style: {{style}}</ion-text><br/>
+    <ion-text>Resize Mode: {{resizeMode}}</ion-text><br/>
+  </ion-card>
+  <div>
+    <ion-button *ngFor="let button of buttons" expand="block" (click)="button.click()">
+      {{button.title}}
+    </ion-button>
+  </div>
+</ion-content>
